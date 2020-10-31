@@ -21,3 +21,20 @@ print(x)
 x = x+2
 print(x)
 print(type(x))
+
+#bool
+print("bool:")
+a = True
+print(a)
+print(2==2)
+
+#none
+print("none:")
+x = None
+print(x)
+x = 5
+print(x)
+print(x is None)
+
+#string
+print("string:")
