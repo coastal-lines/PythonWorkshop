@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonWorkshop", "PythonWorkshop.pyproj", "{EB65A54D-A3CE-4844-B006-BC8D0BD43F30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB65A54D-A3CE-4844-B006-BC8D0BD43F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB65A54D-A3CE-4844-B006-BC8D0BD43F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48122F21-D8DA-4916-B0AD-F973DA346C88}
+	EndGlobalSection
+EndGlobal
