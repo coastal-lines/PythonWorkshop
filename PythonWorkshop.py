@@ -74,3 +74,21 @@ print(s.isupper())
 print(s.islower())
 print(s.find('M'))
 print(s.find('P', 5))
+print("123abc".isalnum())
+print("123abc???".isalnum())
+print("abc".isalpha())
+# how to check string - is null, is empty, has it only spaces
+empty_str = "  "
+print(empty_str.strip() == "")
+
+#and or
+print("\n")
+print(1 < 2 and 1 < 3)
+print(4 == 4 or 5 == 5)
+
+#if not if
+print("\n")
+if(1<2):
+    print("yes")
+if not(1>2):
+    print("no")
