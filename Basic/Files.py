@@ -11,10 +11,11 @@ print(dirpath)
 #print(file.read())
 #file.seek(0)
 
-file = open("text.txt", "r")
-print(file.readlines())
-file.seek(0)
+#file = open("text.txt", "r")
+#print(file.readlines())
+#file.seek(0)
 
-with open("text.txt", "r") as txt:
-    t = txt.read()
-    print(t)
+#with open("text.txt", "r") as txt:
+    #t = txt.read()
+    #print(t)
+

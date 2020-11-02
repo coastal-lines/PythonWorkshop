@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Files.py</StartupFile>
+    <StartupFile>ML\module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,10 +21,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Files.py">
+    <Compile Include="Basic\BytesAndStrings.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PythonWorkshop.py" />
+    <Compile Include="Basic\Files.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\PythonWorkshop.py" />
+    <Compile Include="ML\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ML\" />
+    <Folder Include="Basic\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
