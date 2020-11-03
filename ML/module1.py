@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import mglearn
 from pandas.plotting import scatter_matrix
+import tkinter
 
 #load data
 from sklearn.datasets import load_iris
@@ -32,3 +33,7 @@ print(f"Predict is {iris_dataset['target_names'][prediction]}")
 
 y_pred = knn.predict(X_test)
 print(f"Occurancy is: {knn.score(X_test, y_test)}")
+
+top = tkinter.Tk()
+# Code to add widgets will go here...
+top.mainloop()
