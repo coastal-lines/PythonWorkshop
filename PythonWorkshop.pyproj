@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ML\module1.py</StartupFile>
+    <StartupFile>Basic\Collections.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Basic\BytesAndStrings.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Files.py">
