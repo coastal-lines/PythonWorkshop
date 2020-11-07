@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Collections\Set.py</StartupFile>
+    <StartupFile>Basic\Loops\Loops.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,6 +48,9 @@
     <Compile Include="Basic\Logic\BaseLogic.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\Loops\Loops.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
     <Compile Include="ML\module1.py">
       <SubType>Code</SubType>
@@ -65,6 +68,7 @@
   <ItemGroup>
     <Folder Include="Basic\Collections\" />
     <Folder Include="Basic\Logic\" />
+    <Folder Include="Basic\Loops\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
