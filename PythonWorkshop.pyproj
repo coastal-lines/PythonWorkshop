@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Logic\BaseLogic.py</StartupFile>
+    <StartupFile>Basic\Collections\Set.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
