@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Collections.py</StartupFile>
+    <StartupFile>Basic\Logic\BaseLogic.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,10 +24,28 @@
     <Compile Include="Basic\BytesAndStrings.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Basic\Collections.py">
+    <Compile Include="Basic\Collections\Dict.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections\List.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections\NamedTuple.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections\OrderedDict.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections\Set.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Collections\Tuple.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Files.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Logic\BaseLogic.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
@@ -45,6 +63,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Basic\Collections\" />
+    <Folder Include="Basic\Logic\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
