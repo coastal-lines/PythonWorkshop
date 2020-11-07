@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Loops\Loops.py</StartupFile>
+    <StartupFile>Basic\Loops\While.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,7 +48,13 @@
     <Compile Include="Basic\Logic\BaseLogic.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\Loops\ListComprehension.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\Loops\Loops.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Loops\While.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />

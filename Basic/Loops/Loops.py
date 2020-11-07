@@ -17,3 +17,24 @@ print('-----------')
 persons = [('Paul', 27), ('Sara', 28), ('Richard', 29)]
 for (name, age) in persons:
     print(f'{name} is {age} years old')
+
+print('-----------')
+players = dict(Me=90, You=100, She=200)
+for item in players:
+    print(item)
+
+for k,v in players.items():
+    print(f'{k} has rating {v}')
+
+for v in players.values():
+    print(v)
+
+print('-----------')
+l1 = [1,2,3,4,5,6,7,8,9]
+l2 = [2,3,4,5,-9,0,-23,-45, -99]
+pairs = []
+for x in l1:
+    for y in l2:
+        if x + y == 0:
+            pairs.append((x,y))
+print(pairs)
