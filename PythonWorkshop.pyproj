@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Loops\While.py</StartupFile>
+    <StartupFile>Basic\Loops\Homework\Homework1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,6 +48,9 @@
     <Compile Include="Basic\Logic\BaseLogic.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\Loops\Homework\Homework1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\Loops\ListComprehension.py">
       <SubType>Code</SubType>
     </Compile>
@@ -75,6 +78,7 @@
     <Folder Include="Basic\Collections\" />
     <Folder Include="Basic\Logic\" />
     <Folder Include="Basic\Loops\" />
+    <Folder Include="Basic\Loops\Homework\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
