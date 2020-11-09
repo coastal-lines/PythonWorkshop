@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Loops\Homework\Homework1.py</StartupFile>
+    <StartupFile>Basic\Functions\Functions.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -45,6 +45,9 @@
     <Compile Include="Basic\Files.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\Functions\Functions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\Logic\BaseLogic.py">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,7 @@
     <Folder Include="Basic\Logic\" />
     <Folder Include="Basic\Loops\" />
     <Folder Include="Basic\Loops\Homework\" />
+    <Folder Include="Basic\Functions\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
