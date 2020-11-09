@@ -26,3 +26,15 @@ l2_true = any([False, True, True])
 print(l1_true)
 print(l2_true)
 
+#zip склеивает два итерируемых объекта
+letters = 'abcd'
+numbers = (1,2,3,4)
+zipped = zip(letters, numbers)
+#склеивает только после непосредственного вызова
+zipped_list = list(zipped)
+
+code = ord('a')
+c = chr(code)
+print(code)
+print(c)
+
