@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Functions\Lambda.py</StartupFile>
+    <StartupFile>Basic\Functions\NestedFunctions.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -49,6 +49,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Functions\Functions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Functions\NestedFunctions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Functions\Lambda.py">
