@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\ErrorProcessing\Errors.py</StartupFile>
+    <StartupFile>Basic\UnitTest\UntTesting.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -79,6 +79,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
+    <Compile Include="Basic\UnitTest\MyClass.py" />
+    <Compile Include="Basic\UnitTest\UntTesting.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ML\module1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +103,7 @@
     <Folder Include="Basic\Loops\Homework\" />
     <Folder Include="Basic\Functions\" />
     <Folder Include="Basic\ErrorProcessing\" />
+    <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
