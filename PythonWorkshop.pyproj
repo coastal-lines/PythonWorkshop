@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Functions\NestedFunctions.py</StartupFile>
+    <StartupFile>Basic\ErrorProcessing\Errors.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -42,10 +42,16 @@
     <Compile Include="Basic\Collections\Tuple.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\ErrorProcessing\Errors.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\Files.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Functions\CommonFunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Functions\Decorator.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Functions\Functions.py">
@@ -92,6 +98,7 @@
     <Folder Include="Basic\Loops\" />
     <Folder Include="Basic\Loops\Homework\" />
     <Folder Include="Basic\Functions\" />
+    <Folder Include="Basic\ErrorProcessing\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="OpenCV\" />
