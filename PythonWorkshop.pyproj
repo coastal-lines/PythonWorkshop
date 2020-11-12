@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\UnitTest\UntTesting.py</StartupFile>
+    <StartupFile>Basic\ObjectOrientProgramming\MyClass2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -78,6 +78,15 @@
     <Compile Include="Basic\Loops\While.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\ObjectOrientProgramming\MakeClass.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\ObjectOrientProgramming\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\ObjectOrientProgramming\MyClass2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
     <Compile Include="Basic\UnitTest\MyClass.py" />
     <Compile Include="Basic\UnitTest\UntTesting.py">
@@ -103,6 +112,7 @@
     <Folder Include="Basic\Loops\Homework\" />
     <Folder Include="Basic\Functions\" />
     <Folder Include="Basic\ErrorProcessing\" />
+    <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
