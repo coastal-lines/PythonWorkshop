@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\ObjectOrientProgramming\ABC.py</StartupFile>
+    <StartupFile>Basic\ObjectOrientProgramming\MagicDunderMethods.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -40,6 +40,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Collections\Tuple.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\DataStructure\Stack.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ErrorProcessing\Errors.py">
@@ -82,6 +85,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ObjectOrientProgramming\InheritanceAndPolymorphism.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\ObjectOrientProgramming\MagicDunderMethods.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ObjectOrientProgramming\MakeClass.py">
@@ -127,6 +133,7 @@
     <Folder Include="Basic\Loops\Homework\" />
     <Folder Include="Basic\Functions\" />
     <Folder Include="Basic\ErrorProcessing\" />
+    <Folder Include="Basic\DataStructure\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
