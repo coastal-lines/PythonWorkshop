@@ -1,6 +1,7 @@
 class Vehicle:
     def __init__(self, position):
         self.position = position
+        print('Vehicle was made')
 
     def travel(self):
         pass
@@ -24,6 +25,10 @@ class Car(Vehicle, RadioMixin):
     def __init__(self):
         Vehicle.__init__(self, 0)
         RadioMixin.__init__(self)
+
+class Boat(Vehicle):
+    def __init__(self):
+        Vehicle.__init__(self, 90)
 
 ford = Car()
 ford.play_radio('Jazz')
