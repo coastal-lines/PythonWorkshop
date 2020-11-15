@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\ObjectOrientProgramming\UsingSuper.py</StartupFile>
+    <StartupFile>Basic\ObjectOrientProgramming\Mixin.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -88,6 +88,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ObjectOrientProgramming\ClassAndStatic.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\ObjectOrientProgramming\Mixin.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ObjectOrientProgramming\MultiInheritance.py">
