@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\DataType\DateTime.py</StartupFile>
+    <StartupFile>Basic\Singleton.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -112,6 +112,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
+    <Compile Include="Basic\Singleton.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\UnitTest\MyClass.py" />
     <Compile Include="Basic\UnitTest\UntTesting.py">
       <SubType>Code</SubType>
