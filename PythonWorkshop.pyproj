@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\DataStructure\Stack.py</StartupFile>
+    <StartupFile>Basic\DataType\DateTime.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -43,6 +43,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\DataStructure\Stack.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\DataType\DateTime.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ErrorProcessing\Errors.py">
@@ -134,6 +137,7 @@
     <Folder Include="Basic\Functions\" />
     <Folder Include="Basic\ErrorProcessing\" />
     <Folder Include="Basic\DataStructure\" />
+    <Folder Include="Basic\DataType\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
