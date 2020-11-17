@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Singleton.py</StartupFile>
+    <StartupFile>OpenCV\OpenCV1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -119,7 +119,16 @@
     <Compile Include="Basic\UnitTest\UntTesting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ML\CV1\Darkflow.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ML\CV1\Fashion.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ML\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\Contours.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\OpenCV1.py">
@@ -129,6 +138,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\OpenCV2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\Waldo.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -145,6 +157,7 @@
     <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
+    <Folder Include="ML\CV1\" />
     <Folder Include="OpenCV\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
