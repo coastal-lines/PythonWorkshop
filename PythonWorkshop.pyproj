@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\OpenCV1.py</StartupFile>
+    <StartupFile>Basic\Pickling\Serialization.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -111,6 +111,9 @@
     <Compile Include="Basic\ObjectOrientProgramming\UsingSuper.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Basic\Pickling\Serialization.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Basic\PythonWorkshop.py" />
     <Compile Include="Basic\Singleton.py">
       <SubType>Code</SubType>
@@ -153,6 +156,7 @@
     <Folder Include="Basic\ErrorProcessing\" />
     <Folder Include="Basic\DataStructure\" />
     <Folder Include="Basic\DataType\" />
+    <Folder Include="Basic\Pickling\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
     <Folder Include="ML\" />
