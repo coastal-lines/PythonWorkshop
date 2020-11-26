@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ML\CV1\Fashion.py</StartupFile>
+    <StartupFile>Basic\Dundre\Dunder.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -46,6 +46,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\DataType\DateTime.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Dundre\Dunder.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\ErrorProcessing\Errors.py">
@@ -125,7 +128,13 @@
     <Compile Include="Math\Optimization.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ML\CV1\Augmentation.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ML\CV1\Darkflow.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ML\CV1\Edge.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ML\CV1\Fashion.py">
@@ -159,6 +168,7 @@
     <Folder Include="Basic\ErrorProcessing\" />
     <Folder Include="Basic\DataStructure\" />
     <Folder Include="Basic\DataType\" />
+    <Folder Include="Basic\Dundre\" />
     <Folder Include="Basic\Pickling\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
