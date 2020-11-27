@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Basic\Dundre\Dunder.py</StartupFile>
+    <StartupFile>Basic\Copy\DeepAndShallowCopy.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -40,6 +40,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\Collections\Tuple.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Basic\Copy\DeepAndShallowCopy.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Basic\DataStructure\Stack.py">
@@ -169,6 +172,7 @@
     <Folder Include="Basic\DataStructure\" />
     <Folder Include="Basic\DataType\" />
     <Folder Include="Basic\Dundre\" />
+    <Folder Include="Basic\Copy\" />
     <Folder Include="Basic\Pickling\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
