@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Math\Derivative.py</StartupFile>
+    <StartupFile>Math\NewtonsMethod.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -135,6 +135,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Math\GradientDescent.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Math\NewtonsMethod.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Math\Optimization.py">
