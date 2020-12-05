@@ -16,6 +16,7 @@ print(resultY)
 print(resultZ)
 '''
 
+'''
 x, y, z = symbols('x y z')
 f = 2*x**2 - 4*x*z + 4*y**2 - 8*y*z + 9*z**2 +4*x + 8*y - 20*z
 resultX = diff(f, x)
@@ -24,3 +25,9 @@ resultZ = diff(f, z)
 print(resultX)
 print(resultY)
 print(resultZ)
+'''
+
+x, y = symbols('x y')
+f = x**2 + x*y - 2*x + 3*y - 1
+print(diff(f, x))
+print(diff(f, y))
