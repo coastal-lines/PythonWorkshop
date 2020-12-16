@@ -173,6 +173,9 @@
     <Compile Include="OpenCV\OpenCV2.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\Sikuli.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Waldo.py">
       <SubType>Code</SubType>
     </Compile>
