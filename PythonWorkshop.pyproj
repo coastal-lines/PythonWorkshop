@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\Rectangle.py</StartupFile>
+    <StartupFile>DataVisualization\Test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -128,6 +128,9 @@
     <Compile Include="Basic\UnitTest\UntTesting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataVisualization\Test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Math\Derivative.py">
       <SubType>Code</SubType>
     </Compile>
@@ -201,6 +204,7 @@
     <Folder Include="Basic\" />
     <Folder Include="ML\CV1\" />
     <Folder Include="Math\" />
+    <Folder Include="DataVisualization\" />
     <Folder Include="OpenCV\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
