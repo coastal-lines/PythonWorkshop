@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #open image, conver into RGB, convert into BW
-image_original = cv2.imread(r'C:\Temp2\ForTesseract\labeled\pic.png', cv2.IMREAD_GRAYSCALE)
+image_original = cv2.imread(r'C:\Temp2\ForTesseract\labeled\1.png')
 img_bw_rgb = cv2.cvtColor(image_original, cv2.COLOR_BGR2RGB)
 
 median_intensity = np.median(img_bw_rgb)
