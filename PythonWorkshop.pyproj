@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>PythonWorkshop</Name>
     <RootNamespace>PythonWorkshop</RootNamespace>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
