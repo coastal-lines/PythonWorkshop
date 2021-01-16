@@ -40,17 +40,3 @@ server, user, password, apikey, workspace, project = rallyWorkset(options)
 rally = Rally(server, user, password, workspace=workspace, project=project)
 """
 
-
-
-"""
-def auth_rally(user, password):
-    url = "https://rally1.rallydev.com/slm/webservice/v2.0/subscription"
-    session = requests.Session()
-    session.auth = (user, password)
-    auth = session.post(url)
-    response = session.get(url)
-    print(response.text)
-    session.close()
-
-
-"""
