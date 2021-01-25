@@ -23,7 +23,7 @@ ly.append(b3.y)
 
 ax.bar(lx, ly, align="center")
 
-mplcursors.cursor()
+mplcursors.cursor(ax, hover=True).connect("add", lambda sel: sel.annotation.set_text("helllo!"))
 
 
 """
