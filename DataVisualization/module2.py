@@ -23,18 +23,9 @@ ly.append(b3.y)
 
 ax.bar(lx, ly, align="center")
 
-mplcursors.cursor(ax, hover=True).connect("add", lambda sel: sel.annotation.set_text("helllo!"))
+#work solution for detecting bar index and call method
+mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + sel.target.index + 1)))
 
-
-"""
-    @cursor.connect("add")
-    def on_add(sel):
-        global prev
-        bar_num = sel.target.index + 1
-        postfix = "st"
-        print(f"You hovered over the {bar_num}{postfix} bar.")
-        prev = bar_num
-"""
 
 plt.show()
 
