@@ -7,14 +7,12 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 # plotting the graph in  
 # tkinter window 
 def plot(): 
-  
-    movies = ["film 1", "film 2", "film 3"]
-    oscars = [32, 12, 999]
 
     #Figure - это контейнер самого верхнего уровня, та область на которой все нарисовано. Таких областей может быть несколько, каждая из которых может содержать несколько контейнеров Axes.
     fig = plt.figure()
-    xs = [i + 0.1 for i, _ in enumerate(movies)]
-    plt.bar(xs, oscars)
+    index = ["0","1","2","3","4"]
+    values = [5,7,3,4,6]
+    plt.bar(index,values)
     #Axes - это та область на которой чаще всего и отражаются графики (данные в виде графиков), а так же все вспомогательные атрибуты (линии сетки, метки, указатели и т.д.)
     ax = fig.add_subplot(111)
 
