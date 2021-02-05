@@ -24,7 +24,7 @@ ly.append(b3.y)
 ax.bar(lx, ly, align="center")
 
 #work solution for detecting bar index and call method
-mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + sel.target.index + 1)))
+mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + str(sel.target.index + 1))))
 
 
 plt.show()
