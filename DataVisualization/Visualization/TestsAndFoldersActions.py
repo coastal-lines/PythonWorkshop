@@ -15,7 +15,7 @@ class TestsAndFoldersActions():
         #if folder has testcases
         if len(rootFolder.TestCases) > 0:
             folderNumber = folderNumber + 1
-            tcDict = self.extractTestCasesFromFolder(rootFolder)
+            tcDict = TestsAndFoldersActions.extractTestCasesFromFolder(rootFolder)
             listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], rootFolder.Name))
 
         if len(rootFolder.Children) > 0:
@@ -33,7 +33,7 @@ class TestsAndFoldersActions():
         for folder in folders:
             print(folder.Name)
             print("---")
-            self.extractTestCasesFromFolder(folder)
+            TestsAndFoldersActions.extractTestCasesFromFolder(folder)
 
     @staticmethod
     def extractTestCasesFromFolder(folder):
