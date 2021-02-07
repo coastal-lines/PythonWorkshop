@@ -7,7 +7,7 @@ class Obj():
         self.y = y
 
 
-prev = None
+#prev = None
 fig, ax = plt.subplots()
 
 
