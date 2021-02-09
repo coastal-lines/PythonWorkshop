@@ -3,4 +3,3 @@ class BarClass():
         self.headFolderdName = headFolderdName
         self.countManualTestCases = countManualTestCases
         self.countAutomatedTestCases = countAutomatedTestCases
-        #self.headFolderdName = headFolderdName
