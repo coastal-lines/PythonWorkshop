@@ -69,6 +69,18 @@ class TestsAndFoldersActions():
         testCasesDict = dict(manual = m, automated = a)
         return testCasesDict
 
+    @staticmethod
+    def getMaxValueTestCases(bars):
+        manual = []
+        automated = []
+        for bar in bars:
+            manual.append(bar.countManualTestCases)
+            automated.append(bar.countAutomatedTestCases)
+
+        countTestCases = manual + automated
+        maxAxisX = max(countTestCases) + 1
+        return maxAxisX
+
 """
         @staticmethod
         def extractSubfolders(folder):
