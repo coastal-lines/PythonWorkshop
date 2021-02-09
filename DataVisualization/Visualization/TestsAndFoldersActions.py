@@ -15,15 +15,19 @@ class TestsAndFoldersActions():
         #if folder has testcases
         if len(rootFolder.TestCases) > 0:
             folderNumber = folderNumber + 1
-            tcDict = TestsAndFoldersActions.extractTestCasesFromFolder(rootFolder)
-            listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], rootFolder.Name))
+            TestsAndFoldersActions.extractTestCasesFromRootFolder(rootFolder)
+            tcDict = TestsAndFoldersActions.prepareDict()
+            #listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], rootFolder.Name))
+            listBars.append(BarClass(rootFolder.Name, tcDict["manual"], tcDict["automated"]))
+            TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.clear()
 
         if len(rootFolder.Children) > 0:
             for folder in rootFolder.Children:
                 folderNumber = folderNumber + 1
                 TestsAndFoldersActions.extractTestCasesFromFolder(folder)
                 tcDict = TestsAndFoldersActions.prepareDict()
-                listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], folder.Name))
+                #listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], folder.Name))
+                listBars.append(BarClass(folder.Name, tcDict["manual"], tcDict["automated"]))
                 TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.clear()
 
         return listBars
@@ -44,6 +48,13 @@ class TestsAndFoldersActions():
             if len(folder.Children) > 0:
                 TestsAndFoldersActions.extractFolders(folder.Children)
 
+    @staticmethod
+    def extractTestCasesFromRootFolder(folder):
+        if len(folder.TestCases) > 0:
+            for testCase in folder.TestCases: 
+                print(testCase.Name)
+                TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.append(testCase)
+
     #@staticmethod
     def prepareDict():
         m = 0
@@ -51,7 +62,7 @@ class TestsAndFoldersActions():
 
         if len(TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders) > 0:
             for testCase in TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders:
-                if testCase.Name.find("[AUTOMATED]") == True:
+                if testCase.Name.find("[AUTOMATED]") != -1:
                     a = a + 1
                 else:
                     m = m + 1
