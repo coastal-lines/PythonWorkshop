@@ -1,6 +1,6 @@
-from Project.UserCredential import UserCredential
-from Project.RallyInstance import RallyInstance
-from Project.RallyFolder import RallyFolder
+from DataVisualization.Project.UserCredential import UserCredential
+from DataVisualization.Project.RallyInstance import RallyInstance
+from DataVisualization.Project.RallyFolder import RallyFolder
 from pyral import Rally, rallyWorkset
 
 class RallyCommonObject():
