@@ -6,6 +6,8 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 import seaborn as sns
 import mplcursors
 import pandas as pd
+from pyral import Rally, rallyWorkset
+from Project.RallyCommonObject import RallyCommonObject
 
 class UserInterface():
     tabCount = 0
@@ -70,7 +72,7 @@ class UserInterface():
         txt6 = Entry(master = tab)
         txt6.place(x = 100, y = 100, width=200)
 
-        btn = Button(master = tab, text = "Start session")
+        btn = Button(master = tab, text = "Start session", command = "startSession")
         btn.place(x = 100, y = 120, width=200)
 
     def createTab(self):
@@ -119,3 +121,6 @@ class UserInterface():
         canvas = FigureCanvasTkAgg(fig, master=tab)
         canvas.draw()
         canvas.get_tk_widget().grid()
+
+    def startSession(self):
+        RallyCommonObject(txt1.get(), txt2.get(), txt3.get(), txt4.get(), txt5.get(), txt6.get())
