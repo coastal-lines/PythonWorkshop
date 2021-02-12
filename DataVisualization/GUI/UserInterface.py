@@ -42,7 +42,7 @@ class UserInterface():
         tab = ttk.Frame()
 
         self.tabControl.add(tab, text ='Settings')
-        self.tabControl.place(x = 0, y = 0, width = 400, height = 200)
+        self.tabControl.place(x = 0, y = 0, width = 1100, height = 800)
 
         lbl1 = Label(master = tab, text="Server:")
         lbl1.place(x = 0, y = 0, width=100)
@@ -74,13 +74,12 @@ class UserInterface():
         btn.place(x = 100, y = 120, width=200)
 
     def createTab(self):
-        global tabCount
-        tabCount = tabCount + 1
+        self.tabCount = self.tabCount + 1
 
         #matplotlib frame 
         tab = ttk.Frame()
 
-        self.tabControl.add(tab, text ='Tab ' + str(tabCount))
+        self.tabControl.add(tab, text ='Tab ' + str(self.tabCount))
         self.tabControl.place(x = 0, y = 0)
         #frameCanvas = Frame(master = window, width = 1100, height = 800, bg="white")
         #frameCanvas.place(x = 0, y = 50)
