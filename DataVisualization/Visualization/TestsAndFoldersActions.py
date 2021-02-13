@@ -1,4 +1,4 @@
-from Visualization.BarClass import BarClass
+from DataVisualization.Visualization.BarClass import BarClass
 from pyral import Rally, rallyWorkset
 
 class TestsAndFoldersActions():

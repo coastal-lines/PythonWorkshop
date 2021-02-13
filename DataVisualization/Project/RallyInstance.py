@@ -1,5 +1,5 @@
 from pyral import Rally, rallyWorkset
-from Project.RallyFolder import RallyFolder
+from DataVisualization.Project.RallyFolder import RallyFolder
 
 class RallyInstance():
     def __init__(self, UserCredential):
