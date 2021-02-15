@@ -15,9 +15,10 @@ from DataVisualization.Project.RallyWorkspace import RallyWorkspace
 from DataVisualization.Visualization.BarClass import BarClass
 from DataVisualization.Visualization.TestsAndFoldersActions import TestsAndFoldersActions
 from DataVisualization.Visualization.DataFrameActions import DataFrameActions
-#from GUI.UserInterface import UserInterface
 
 class CommonClass():
+    tabCount = 0
+    rootFolder = None
 
     def startSession(self, server, login, password, workspace, project, folder):
         self.user = UserCredential(server, login, password)
@@ -27,7 +28,22 @@ class CommonClass():
         self.rootFolder = RallyFolder(self.rally ,'FormattedID = "' + folder + '"').testFolder
         x = 100
 
+    def getRootFolderName(self):
+        return self.rootFolder.Name
 
+    def getTidyData(self):
+        bars = TestsAndFoldersActions().extractFoldersFromRootFolder(self.rootFolder)
+        tidyData = DataFrameActions.PrepareDataFrame(bars)
+        return tidyData
+
+    def getUntidyData(self):
+        return DataFrameActions.getDataFrame()
+
+    def setRootFolder(self, folderID):
+        self.rootFolder = RallyFolder(self.rally ,'FormattedID = "' + folderID + '"').testFolder
+
+    def runCustomRequest(self):
+        pass
 
     """
         allTestCasesInFolderIncludeSubfolders = []
