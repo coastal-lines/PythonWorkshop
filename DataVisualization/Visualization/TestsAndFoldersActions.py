@@ -17,8 +17,7 @@ class TestsAndFoldersActions():
             folderNumber = folderNumber + 1
             TestsAndFoldersActions.extractTestCasesFromRootFolder(rootFolder)
             tcDict = TestsAndFoldersActions.prepareDict()
-            #listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], rootFolder.Name))
-            listBars.append(BarClass(rootFolder.Name, tcDict["manual"], tcDict["automated"]))
+            listBars.append(BarClass(rootFolder.Name, rootFolder.FormattedID, tcDict["manual"], tcDict["automated"]))
             TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.clear()
 
         if len(rootFolder.Children) > 0:
@@ -27,7 +26,7 @@ class TestsAndFoldersActions():
                 TestsAndFoldersActions.extractTestCasesFromFolder(folder)
                 tcDict = TestsAndFoldersActions.prepareDict()
                 #listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], folder.Name))
-                listBars.append(BarClass(folder.Name, tcDict["manual"], tcDict["automated"]))
+                listBars.append(BarClass(folder.Name, folder.FormattedID, tcDict["manual"], tcDict["automated"]))
                 TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.clear()
 
         return listBars
@@ -45,8 +44,8 @@ class TestsAndFoldersActions():
             for testCase in folder.TestCases: 
                 print(testCase.Name)
                 TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.append(testCase)
-            if len(folder.Children) > 0:
-                TestsAndFoldersActions.extractFolders(folder.Children)
+        if len(folder.Children) > 0:
+            TestsAndFoldersActions.extractFolders(folder.Children)
 
     @staticmethod
     def extractTestCasesFromRootFolder(folder):
