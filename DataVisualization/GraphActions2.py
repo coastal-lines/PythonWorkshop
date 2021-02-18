@@ -1,15 +1,20 @@
-import seaborn as sns
+from tkinter import *
+from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure 
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk) 
+import seaborn as sns
 import mplcursors
 import pandas as pd
 
+
 dpi = 96
-plt.rcParams['figure.figsize']=(1200 / dpi, 800 / dpi)
+plt.rcParams['figure.figsize']=(1050 / dpi, 750 / dpi)
 plt.rcParams.update({'figure.autolayout': True})
-#sns.set_style('darkgrid')
 
 fig, ax = plt.subplots()
+
+fig.suptitle('Main title')
 
 x = ['zero', 'one', 'two', 'three', 'four', 'five']
 y = [0.5,1,2,3,4,5]
@@ -17,8 +22,8 @@ y2 = [6,7,8,9,10,11]
 
 df = pd.DataFrame({
     'Factor': x,
-    'W': y,
-    'W2': y2
+    'manual': y,
+    'automated': y2
 })
 
 print(df)
@@ -33,5 +38,13 @@ ax.set_xticks(range(1, max(y2) + 1))
 
 mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + str(sel.target.index + 1))))
 
-plt.show()
 
+#tkinter
+window = Tk()
+#title
+window.title("Rally Data Visualization and Prediction")
+window.geometry("1400x900")
+
+
+#endles loop for wait any user interactions - will works during window is opened
+window.mainloop()

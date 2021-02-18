@@ -1,6 +1,9 @@
 class Demo():
     myvar = "Demo class999"
 
-    @staticmethod
-    def print(myclass):
-        print(Demo.myvar + myclass.text)
+    def prrr(self):
+        print("232333333333333")
+
+    def print(self):
+        print("887")
+        self.prrr()

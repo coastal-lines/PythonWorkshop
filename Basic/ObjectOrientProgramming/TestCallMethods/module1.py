@@ -1,9 +1,15 @@
 from module2 import Demo
+from module3 import Test
 
-class MyClass():
-    text = "5555"
+t = Test()
+t.print()
 
-m = MyClass()
-x = Demo()
-x.print(m)
-#Demo.print()
+"""
+    class MyClass():
+        text = "5555"
+
+    m = MyClass()
+    x = Demo()
+    x.print()
+    #Demo.print()
+"""

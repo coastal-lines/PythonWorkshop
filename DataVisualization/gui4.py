@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure 
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk) 
@@ -39,21 +40,6 @@ def plot2():
     canvas.draw()
     canvas.get_tk_widget().grid()
 
-#plot
-def plot(): 
-    fig = Figure(figsize=(5, 4), dpi=200)
-    index = ["0","1","2","3","4"]
-    values = [5,7,3,4,6]
-    plt.bar(index,values)
-    ax = fig.add_subplot(111)
-    canvas = FigureCanvasTkAgg(fig, master = frameCanvas)
-    canvas.draw()
-    canvas.get_tk_widget().grid()
-    frame = Frame(master = frameCanvas, width = 1200, height = 800)
-    #frame.grid(row=0, column=1)
-    toobar = NavigationToolbar2Tk(canvas, frame)
-    #canvas.get_tk_widget().grid(row=1, column=0)
-
 #actions
 def getText():
     print(txt.get())
@@ -64,13 +50,14 @@ window = Tk()
 window.title("Rally Data Visualization and Prediction")
 window.geometry("1400x900")
 
-frameCanvas = Frame(window, width = 1100, height = 800, bg="white")
-frameCanvas.place(x = 0, y = 0)
+#temp frames 
+frameCanvas = Frame(master = window, width = 1100, height = 800, bg="white")
+frameCanvas.place(x = 0, y = 50)
 canvas = Canvas(master = frameCanvas, width = 1100, height = 800)
 canvas.place(x = 0, y = 0)
 
-frameElements = Frame(window, width = 1100, height = 20)
-frameElements.place(x = 0, y = 780)
+frameElements = Frame(master = window, width = 1100, height = 20)
+frameElements.place(x = 0, y = 830)
 
 lbl = Label(master = frameElements, text="Query input:")
 lbl.place(x = 0, y = 0, width=100)

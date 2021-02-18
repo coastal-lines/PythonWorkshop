@@ -16,9 +16,26 @@ from DataVisualization.Visualization.BarClass import BarClass
 from DataVisualization.Visualization.TestsAndFoldersActions import TestsAndFoldersActions
 from DataVisualization.Visualization.DataFrameActions import DataFrameActions
 
+class UserSpecialBar():
+    def __init__(self, name, manual, automated):
+        self.name = name
+        self.manual = manual
+        self.automated = automated
+
+class UserTestFromRequest():
+    def __init__(self, rootFolder, tcType, name, id):
+        self.rootFolder = rootFolder
+        self.tcType = tcType
+        self.name = name
+        self.id = id
+
 class CommonClass():
+    totalTestsCount = 0
+    totalManualTestsCount = 0
+    totalAutomatedTestsCount = 0
     tabCount = 0
     rootFolder = None
+    tidyDataForCustomUserQuery = None
 
     def startSession(self, server, login, password, workspace, project, folder):
         self.user = UserCredential(server, login, password)
@@ -42,110 +59,109 @@ class CommonClass():
     def setRootFolder(self, folderID):
         self.rootFolder = RallyFolder(self.rally ,'FormattedID = "' + folderID + '"').testFolder
 
-    def runCustomRequest(self):
-        pass
+    def runCustomRequest(self, query, rootFolderFormattedID):
+        #get response with User's query
+        testCasesFromUserQuery = self.rally.get('TestCase', fetch = True, projectScopeDown = True, query = query)
 
-    """
-        allTestCasesInFolderIncludeSubfolders = []
+        #extract test cases from response
+        listTC = []
+        for number in range(testCasesFromUserQuery.resultCount):
+            listTC.append(testCasesFromUserQuery.next())
 
-        def extractFolders(folders):
-            for folder in folders:
-                print(folder.Name)
-                print("---")
-                extractTestCasesFromFolder(folder)
+        #get root test folders according the main root folder
+        rootFolder = RallyFolder(self.rally ,'FormattedID = "' + rootFolderFormattedID + '"').testFolder
+        listRootSubfolders = rootFolder.Children
 
+        #prepare cases for bars
+        listRootFoldersOfUser = []
+        for tc in listTC:
+            tcType = None
+            tcId = None
+            tcRoot = None
+            tcName = None
 
-        def extractTestCasesFromFolder(folder):
-            if len(folder.TestCases) > 0:
-                for testCase in folder.TestCases: 
-                    print(testCase.Name)
-                if len(folder.Children) > 0:
-                    extractFolders(folder.Children)
+            #name
+            tcName = tc.Name
 
-        #login
+            #id
+            tcId = tc.FormattedID
 
-        user = UserCredential(server, login, password)
-        rally = RallyInstance(user).rally
-        #set workspace
-        workspaces = rally.getWorkspaces()
-        rally.setWorkspace('')
-        rally.setProject('')
-        #set root folder
-        rootFolder = RallyFolder(rally ,'FormattedID = ""').testFolder #
-        #get all folders from root folder
-        folders = rootFolder.Children
-        #prepare list of bars
-        bars = TestsAndFoldersActions().extractFoldersFromRootFolder(rootFolder)
-        tidyData = DataFrameActions.PrepareDataFrame(bars)
-    """
-    """
+            #type
+            if tc.Name.find("AUTOMATED") != -1:
+                tcType = "automated"
+            else:
+                tcType = "manual"
+
+            #root
+            for rootFolder in listRootSubfolders:
+                if tc.TestFolder.Name == rootFolder.Name:
+                    tcRoot = rootFolder.Name
+                    break
+                elif tc.TestFolder.Parent.Name == rootFolder.Name:
+                    tcRoot = tc.TestFolder.Parent.Name
+                    break
+                else:
+                    tf = tc.TestFolder.Parent
+                    tcRoot = self.getParentName(tf, rootFolder.Name)
+                    #break
+
+            #add to list
+            listRootFoldersOfUser.append(UserTestFromRequest(tcRoot, tcType, tcName, tcId))
+
+        self.prepareForMatPlotLib(listRootFoldersOfUser)
+        return self.tidyDataForCustomUserQuery
+
+    #find parent name by recursion
+    def getParentName(self, testFolder, rootFolderName):
+        try:
+            if testFolder.Name != None and testFolder.Name == rootFolderName:
+                return rootFolderName
+            else:
+                self.getParentName(testFolder.Parent, rootFolderName)
+        except AttributeError:
+            print("not this root folder")
+
+    #prepare data for convert into matplotlib's bars
+    def prepareForMatPlotLib(self, listRootFoldersOfUser):
+        #uniq root folders
+        uniqRootFolders = list(set([tc.rootFolder for tc in listRootFoldersOfUser]))
+
+        #for each uniq folder how many manual and auto tests
+        listUserBars = []
+        for unRoot in uniqRootFolders:
+            manual = 0
+            automated = 0
+            name = unRoot
+
+            for item in listRootFoldersOfUser:
+                if unRoot == item.rootFolder:
+                    if item.tcType == "manual":
+                        manual = manual + 1
+                    else:
+                        automated = automated + 1
+
+            listUserBars.append(UserSpecialBar(name, manual, automated))
+
+        self.createTidyData(listUserBars)
+
+    #create tidy data
+    def createTidyData(self, listUserBars):
+        #ids = []
         names = []
         manual = []
         automated = []
-        for bar in bars:
-            names.append(bar.headFolderdName)
-            manual.append(bar.countManualTestCases)
-            automated.append(bar.countAutomatedTestCases)
 
-        df = pd.DataFrame({
-            'Factor': names,
-            'Weight': manual,
-            'Weight2': automated
+        for item in listUserBars:
+            #ids.append(item.name)
+            names.append(item.name)
+            manual.append(item.manual)
+            automated.append(item.automated)
+
+        dataFrame = pd.DataFrame({
+            'ids': None,
+            'names': names,
+            'manual': manual,
+            'automated': automated
         })
 
-        countTestCases = manual + automated
-        maxAxisX = max(countTestCases) + 1
-
-        plt.rcParams.update({'figure.autolayout': True})
-        tidy = df.melt(id_vars='Factor').rename(columns=str.title)
-    """
-
-    """
-        plt.rcParams.update({'figure.autolayout': True})
-        ax = sns.barplot(y='Factor', x='Value', hue='Variable', data=tidyData)
-        maxAxisX = TestsAndFoldersActions.getMaxValueTestCases(bars)
-        ax.set_xlim(0, maxAxisX)
-        ax.set_xticks(range(0, maxAxisX))
-        mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + str(sel.target.index + 1))))
-        plt.show()
-    """
-
-    """
-        list_steps = None
-        for test_case in test_cases:
-            print(test_case.FormattedID)
-            print(test_case.Name)
-            list_steps=test_case.Steps
-            listInputs = []
-            listExpectedResult = []
-            for i in list_steps:
-                listInputs.append(i.Input)
-                print(i.Input)
-            for er in list_steps:
-                listExpectedResult.append(er.ExpectedResult)
-                print(er.ExpectedResult)
-    """
-    a=100
-
-    """
-        #It looks like this cut off some of the labels on the bottom. We can tell Matplotlib to automatically make room for elements in the figures that we create
-        plt.rcParams.update({'figure.autolayout': True})
-
-        pylab.rcParams['ytick.major.pad']='8'
-
-        fig, ax = plt.subplots()
-        ax.yaxis.set_major_locator(MaxNLocator(integer=True))
-        lx = []
-        ly = []
-        labels = []
-
-        for b in bars:
-            lx.append(b.x)
-            ly.append(b.countManualTestCases)
-            labels.append(b.headFolderdName)
-
-        #ax.set(yticks = range(1, len(lx) + 1), yticklabels = labels, title="Hover over a bar")
-        ax.set(yticks = range(1, len(ly) + 1), yticklabels = labels, title="Hover over a bar")
-        #ax.barh(lx, ly, align="center")
-        ax.barh(lx, ly, height=0.01, align="center")
-    """
+        self.tidyDataForCustomUserQuery = dataFrame.melt(id_vars='names', value_vars=['manual', 'automated'])
