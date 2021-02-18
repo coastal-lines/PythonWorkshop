@@ -79,13 +79,3 @@ class TestsAndFoldersActions():
         countTestCases = manual + automated
         maxAxisX = max(countTestCases) + 1
         return maxAxisX
-
-"""
-        @staticmethod
-        def extractSubfolders(folder):
-            if len(folder.Children) > 0:
-                for folder in folders:
-                    folderNumber = folderNumber + 1
-                    tcDict = extractTestCasesFromFolder(folder)
-                    listBars.append(BarClass(folderNumber, tcDict["manual"], tcDict["automated"], rootFolder.Name))
-"""
