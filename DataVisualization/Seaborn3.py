@@ -45,7 +45,14 @@ canvas = Canvas(master = window, width = 1100, height = 800)
 canvas.place(x = 0, y = 0)
 canvas = FigureCanvasTkAgg(fig, master=window)
 canvas.draw()
-canvas.get_tk_widget().grid()
+canvas.get_tk_widget().grid(row=0,column=1)
+
+toolbar = NavigationToolbar2Tk(canvas, window, pack_toolbar=False)
+toolbar.update()
+def on_key_press(event):
+    print("you pressed {}".format(event.key))
+    key_press_handler(event, canvas, toolbar)
+
 mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + str(sel.target.index + 1))))
 
 window.mainloop() 

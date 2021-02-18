@@ -41,5 +41,4 @@ fig.suptitle("99999999999")
 
 ax = sns.barplot(y='names', x='value', hue='variable', data = tidy)
 
-
 plt.show()

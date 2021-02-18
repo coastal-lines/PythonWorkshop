@@ -34,3 +34,4 @@ ax.set_xticks(range(1, max(y2) + 1))
 mplcursors.cursor(ax, hover=False).connect("add", lambda sel: sel.annotation.set_text(print("bar is: " + str(sel.target.index + 1))))
 
 plt.show()
+
