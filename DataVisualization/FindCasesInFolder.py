@@ -2,13 +2,16 @@ import requests
 from pyral import Rally, rallyWorkset
 import matplotlib.pyplot as plt
 
-
+server = ''
+user = ''
+password = ''
 
 testFolderChildrens = None
 rally = None
 
 def login(folderID):
     rally = Rally(server=server, user=user, password=password)
+
     workspaces = rally.getWorkspaces()
 
     rootWorkspace = None
@@ -31,13 +34,9 @@ def login(folderID):
 
     folder_id = "TF22587"
 
-    query_criteria = 'FormattedID = "TF22587"' # + folderID
-    #testFolder = rally.get('TestFolder',  query=query_criteria, fetch=True, instance=True)
-    #testFolder = rally.get('TestFolder', fetch='True', query=query_criteria, instance=True)
-    #folders = rally.get('TestFolder', query='TestFolder.Name = TF22587', instance=True)
-    #testFolderChildrens = testFolder.Children
+    query_criteria = 'FormattedID = "TF22587"'
     query = 'FormattedID = %s'
-    test_folder_req = rally.get('TestFolder', fetch=True, projectScopeDown=True, query=query % 'TF22587') # folder_id == "TF111"
+    test_folder_req = rally.get('TestFolder', fetch=True, projectScopeDown=True, query=query % 'TF22587')
     test_folder = test_folder_req.next()
     test_cases = test_folder.TestCases
     print('Start working with %s' % folder_id)
