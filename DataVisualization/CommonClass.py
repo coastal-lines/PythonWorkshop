@@ -30,6 +30,7 @@ class UserTestFromRequest():
         self.id = id
 
 class CommonClass():
+    rally = None
     totalTestsCount = 0
     totalManualTestsCount = 0
     totalAutomatedTestsCount = 0
@@ -37,9 +38,11 @@ class CommonClass():
     rootFolder = None
     tidyDataForCustomUserQuery = None
 
-    def startSession(self, server, login, password, workspace, project, folder):
+    def login(self, server, login, password):
         self.user = UserCredential(server, login, password)
         self.rally = RallyInstance(self.user).rally
+
+    def startSession(self, workspace, project, folder):
         self.rally.setWorkspace(workspace)
         self.rally.setProject(project)
         self.rootFolder = RallyFolder(self.rally ,'FormattedID = "' + folder + '"').testFolder
