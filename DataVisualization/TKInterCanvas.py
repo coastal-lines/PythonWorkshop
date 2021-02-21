@@ -12,13 +12,20 @@ window.configure(bg="black")
 
 #ttk.Notebook - это контейнер для таб
 tabControl = ttk.Notebook(window)
+tabControl.place(x = 0, y = 0, width = 1650, height = 850)
+tab = ttk.Frame()
+tab.place(x =20, y = 30)
+tabControl.add(tab, text ='Settings')
 
 #Frame - виджет помогающий разместить несколько областей для элементов
-tabFrame = Frame(master = window, width = 1600, height = 800, bg="white")
-tabFrame.place(x = 0, y = 0)
+tabFrame = Frame(master = tab, width = 1600, height = 800, bg="white")
+tabFrame.place(x =30, y = 40)
 
 dpi = 96
 plt.rcParams['figure.figsize']=(1400 / dpi, 700 / dpi)
+plt.rcParams['axes.facecolor'] = 'green'
+plt.rcParams['savefig.facecolor']='black'
+plt.scatter(40, 50)
 fig, ax = plt.subplots()
 tips = sns.load_dataset("tips")
 ax = sns.barplot(x="day", y="total_bill", data=tips)
@@ -28,9 +35,11 @@ canvas = FigureCanvasTkAgg(fig, master = tabFrame)
 canvas.draw()
 canvas.get_tk_widget().grid()
 
+
+"""
 #фрейм для авто/ручное
-tabFrame2 = Frame(master = window, width = 200, height = 200, bg="red")
-tabFrame2.place(x = 1500, y = 0)
+tabFrame2 = Frame(master = tab, width = 200, height = 200, bg="red")
+tabFrame2.place(x = 1500, y = 30)
 labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
 sizes = [15, 30, 45, 10]
 explode = (0, 0.1, 0, 0)
@@ -43,7 +52,7 @@ canvas2.draw()
 canvas2.get_tk_widget().grid()
 
 #фрейм для флеш
-tabFrame3 = Frame(master = window, width = 200, height = 200, bg="red")
+tabFrame3 = Frame(master = tab, width = 200, height = 200, bg="red")
 tabFrame3.place(x = 1500, y = 300)
 labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
 sizes = [15, 30, 45, 10]
@@ -57,7 +66,7 @@ canvas3.draw()
 canvas3.get_tk_widget().grid()
 
 #фрейм для секюр клиент
-tabFrame4 = Frame(master = window, width = 200, height = 200, bg="red")
+tabFrame4 = Frame(master = tab, width = 200, height = 200, bg="red")
 tabFrame4.place(x = 1500, y = 600)
 labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
 sizes = [15, 30, 45, 10]
@@ -69,6 +78,6 @@ fig4.set_size_inches(2,2)
 canvas4 = FigureCanvasTkAgg(fig4, master = tabFrame4)
 canvas4.draw()
 canvas4.get_tk_widget().grid()
-
+"""
 
 window.mainloop() 
