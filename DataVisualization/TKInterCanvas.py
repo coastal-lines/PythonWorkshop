@@ -5,11 +5,13 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure 
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk) 
 
+#WINDOW
 #window - экземпляр класса tkinter
 window = Tk()
 window.geometry("1700x900")
 window.configure(bg="black")
 
+#TAB
 #ttk.Notebook - это контейнер для таб
 tabControl = ttk.Notebook(window)
 tabControl.place(x = 0, y = 0, width = 1650, height = 850)
@@ -34,7 +36,6 @@ ax = sns.barplot(x="day", y="total_bill", data=tips)
 canvas = FigureCanvasTkAgg(fig, master = tabFrame)
 canvas.draw()
 canvas.get_tk_widget().grid()
-
 
 """
 #фрейм для авто/ручное
@@ -79,5 +80,4 @@ canvas4 = FigureCanvasTkAgg(fig4, master = tabFrame4)
 canvas4.draw()
 canvas4.get_tk_widget().grid()
 """
-
 window.mainloop() 
