@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DataVisualization\SpecificRequest.py</StartupFile>
+    <StartupFile>DataVisualization\MainClass.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -161,6 +161,7 @@
     <Compile Include="DataVisualization\gui4.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataVisualization\GUI\UserInterface2.py" />
     <Compile Include="DataVisualization\GUI\UserInterface.py">
       <SubType>Code</SubType>
     </Compile>
@@ -235,7 +236,13 @@
     <Compile Include="DataVisualization\TempMethods.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataVisualization\Visualization\BarClass.py">
+    <Compile Include="DataVisualization\TKInterCanvas.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataVisualization\TempOOP.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataVisualization\Visualization\UserDataObjects\BarClass.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataVisualization\Visualization\DataFrameActions.py">
@@ -247,7 +254,10 @@
     <Compile Include="DataVisualization\Visualization\TestsAndFoldersActions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataVisualization\Visualization\UserTabData.py">
+    <Compile Include="DataVisualization\Visualization\UserDataObjects\UserTabData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataVisualization\Visualization\UserDataObjects\UserTestFromRequest.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Math\Derivative.py">
@@ -323,6 +333,7 @@
     <Folder Include="DataVisualization\GUI\" />
     <Folder Include="DataVisualization\Visualization\" />
     <Folder Include="DataVisualization\Project\" />
+    <Folder Include="DataVisualization\Visualization\UserDataObjects\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="ML\CV1\" />
