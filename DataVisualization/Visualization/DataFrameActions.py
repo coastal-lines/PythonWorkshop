@@ -1,5 +1,5 @@
 import pandas as pd
-from DataVisualization.Visualization.BarClass import BarClass
+from DataVisualization.Visualization.UserDataObjects.BarClass import BarClass
 
 class DataFrameActions():
     dataFrame = None
