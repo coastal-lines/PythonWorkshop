@@ -1,4 +1,7 @@
-from DataVisualization.Visualization.BarClass import BarClass
+from DataVisualization.Visualization.UserDataObjects.BarClass import BarClass
+from DataVisualization.Visualization.UserDataObjects.UserTestFromRequest import UserTestFromRequest
+from DataVisualization.Visualization.UserDataObjects.UserTestFromRequest import UserTestFromRequest
+from DataVisualization.Project.RallyFolder import RallyFolder
 from pyral import Rally, rallyWorkset
 
 class TestsAndFoldersActions():
@@ -79,3 +82,92 @@ class TestsAndFoldersActions():
         countTestCases = manual + automated
         maxAxisX = max(countTestCases) + 1
         return maxAxisX
+
+    @staticmethod
+    def getCustomUserRequest(testCasesFromUserQuery, listRootSubfolders):
+        #extract test cases from response
+        listTC = []
+        for number in range(testCasesFromUserQuery.resultCount):
+            listTC.append(testCasesFromUserQuery.next())
+
+        #prepare cases for bars
+        listRootFoldersOfUser = []
+        for tc in listTC:
+            tcType = None
+            tcId = None
+            tcRoot = None
+            tcName = None
+
+            #name
+            tcName = tc.Name
+
+            #id
+            tcId = tc.FormattedID
+
+            #type
+            if tc.Name.find("AUTOMATED") != -1:
+                tcType = "automated"
+            else:
+                tcType = "manual"
+
+            #root
+            for rootFolder in listRootSubfolders:
+                if tc.TestFolder.Name == rootFolder.Name:
+                    tcRoot = rootFolder.Name
+                    break
+                elif tc.TestFolder.Parent.Name == rootFolder.Name:
+                    tcRoot = tc.TestFolder.Parent.Name
+                    break
+                else:
+                    tf = tc.TestFolder.Parent
+                    tcRoot = TestsAndFoldersActions.getParentName(tf, rootFolder.Name)
+                    #break
+
+            #add to list
+            listRootFoldersOfUser.append(UserTestFromRequest(tcRoot, tcType, tcName, tcId))
+
+        #uniq root folders
+        uniqRootFolders = list(set([tc.rootFolder for tc in listRootFoldersOfUser]))
+
+        #for each uniq folder how many manual and auto tests
+        listUserBars = []
+        for unRoot in uniqRootFolders:
+            manual = 0
+            automated = 0
+            name = unRoot
+
+            for item in listRootFoldersOfUser:
+                if unRoot == item.rootFolder:
+                    if item.tcType == "manual":
+                        manual = manual + 1
+                    else:
+                        automated = automated + 1
+
+            #listUserBars.append(UserSpecialBar(name, manual, automated))
+            listUserBars.append(BarClass(name, "-1", manual, automated))
+
+        #ids = []
+        names = []
+        manual = []
+        automated = []
+
+        for item in listUserBars:
+            #names.append(item.name)
+            #manual.append(item.manual)
+            #automated.append(item.automated)
+            names.append(item.headFolderdName)
+            manual.append(item.countManualTestCases)
+            automated.append(item.countAutomatedTestCases)
+
+        return listUserBars
+
+    #find parent name by recursion
+    @classmethod
+    def getParentName(cls, testFolder, rootFolderName):
+        try:
+            if testFolder.Name != None and testFolder.Name == rootFolderName:
+                return rootFolderName
+            else:
+                TestsAndFoldersActions.getParentName(testFolder.Parent, rootFolderName)
+        except AttributeError:
+            print("not this root folder")
