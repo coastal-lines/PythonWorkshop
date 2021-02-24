@@ -81,3 +81,12 @@ canvas4.draw()
 canvas4.get_tk_widget().grid()
 """
 window.mainloop() 
+
+
+def test(self):
+    self.tabCount = self.tabCount + 1
+    tab = ttk.Frame()
+    self.rootFolderName = self.commonClass.getRootFolderName()
+    self.tabControl.add(tab, text = self.rootFolderName)
+    self.tabControl.place(x = 0, y = 0)
+
