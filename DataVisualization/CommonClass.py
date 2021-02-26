@@ -12,7 +12,7 @@ from DataVisualization.Project.UserCredential import UserCredential
 from DataVisualization.Project.RallyInstance import RallyInstance
 from DataVisualization.Project.RallyFolder import RallyFolder
 from DataVisualization.Project.RallyWorkspace import RallyWorkspace
-from DataVisualization.Visualization.BarClass import BarClass
+from DataVisualization.Visualization.UserDataObjects.BarClass import BarClass
 from DataVisualization.Visualization.TestsAndFoldersActions import TestsAndFoldersActions
 from DataVisualization.Visualization.DataFrameActions import DataFrameActions
 
@@ -37,6 +37,7 @@ class CommonClass():
     tabCount = 0
     rootFolder = None
     tidyDataForCustomUserQuery = None
+    testCasesFromUserQuery = None
 
     def login(self, server, login, password):
         self.user = UserCredential(server, login, password)
@@ -62,109 +63,24 @@ class CommonClass():
     def setRootFolder(self, folderID):
         self.rootFolder = RallyFolder(self.rally ,'FormattedID = "' + folderID + '"').testFolder
 
-    def runCustomRequest(self, query, rootFolderFormattedID):
+    def getCustomUserRequest(self, query, rootFolderFormattedID):
         #get response with User's query
-        testCasesFromUserQuery = self.rally.get('TestCase', fetch = True, projectScopeDown = True, query = query)
-
-        #extract test cases from response
-        listTC = []
-        for number in range(testCasesFromUserQuery.resultCount):
-            listTC.append(testCasesFromUserQuery.next())
+        self.testCasesFromUserQuery = self.rally.get('TestCase', fetch = True, projectScopeDown = True, query = query)
 
         #get root test folders according the main root folder
         rootFolder = RallyFolder(self.rally ,'FormattedID = "' + rootFolderFormattedID + '"').testFolder
         listRootSubfolders = rootFolder.Children
 
-        #prepare cases for bars
-        listRootFoldersOfUser = []
-        for tc in listTC:
-            tcType = None
-            tcId = None
-            tcRoot = None
-            tcName = None
+        bars = TestsAndFoldersActions().getCustomUserRequest(self.testCasesFromUserQuery, listRootSubfolders)
+        tidyDataForCustomUserQuery = DataFrameActions.PrepareDataFrame(bars)
 
-            #name
-            tcName = tc.Name
+        return tidyDataForCustomUserQuery
 
-            #id
-            tcId = tc.FormattedID
+    def setTestCasesFromUserQuery(self):
+        self.testCasesFromUserQuery = TestsAndFoldersActions().getAllTestCasesInFolderIncludeSubfolders()
 
-            #type
-            if tc.Name.find("AUTOMATED") != -1:
-                tcType = "automated"
-            else:
-                tcType = "manual"
+    def getSpecificTestCasesForChartPie(self, typeOfRequest):
+        #SC and other
+        specificTestCasesDict = TestsAndFoldersActions().getDataForCustomChartPie1(self.testCasesFromUserQuery, typeOfRequest)
 
-            #root
-            for rootFolder in listRootSubfolders:
-                if tc.TestFolder.Name == rootFolder.Name:
-                    tcRoot = rootFolder.Name
-                    break
-                elif tc.TestFolder.Parent.Name == rootFolder.Name:
-                    tcRoot = tc.TestFolder.Parent.Name
-                    break
-                else:
-                    tf = tc.TestFolder.Parent
-                    tcRoot = self.getParentName(tf, rootFolder.Name)
-                    #break
-
-            #add to list
-            listRootFoldersOfUser.append(UserTestFromRequest(tcRoot, tcType, tcName, tcId))
-
-        self.prepareForMatPlotLib(listRootFoldersOfUser)
-        return self.tidyDataForCustomUserQuery
-
-    #find parent name by recursion
-    def getParentName(self, testFolder, rootFolderName):
-        try:
-            if testFolder.Name != None and testFolder.Name == rootFolderName:
-                return rootFolderName
-            else:
-                self.getParentName(testFolder.Parent, rootFolderName)
-        except AttributeError:
-            print("not this root folder")
-
-    #prepare data for convert into matplotlib's bars
-    def prepareForMatPlotLib(self, listRootFoldersOfUser):
-        #uniq root folders
-        uniqRootFolders = list(set([tc.rootFolder for tc in listRootFoldersOfUser]))
-
-        #for each uniq folder how many manual and auto tests
-        listUserBars = []
-        for unRoot in uniqRootFolders:
-            manual = 0
-            automated = 0
-            name = unRoot
-
-            for item in listRootFoldersOfUser:
-                if unRoot == item.rootFolder:
-                    if item.tcType == "manual":
-                        manual = manual + 1
-                    else:
-                        automated = automated + 1
-
-            listUserBars.append(UserSpecialBar(name, manual, automated))
-
-        self.createTidyData(listUserBars)
-
-    #create tidy data
-    def createTidyData(self, listUserBars):
-        #ids = []
-        names = []
-        manual = []
-        automated = []
-
-        for item in listUserBars:
-            #ids.append(item.name)
-            names.append(item.name)
-            manual.append(item.manual)
-            automated.append(item.automated)
-
-        dataFrame = pd.DataFrame({
-            'ids': None,
-            'names': names,
-            'manual': manual,
-            'automated': automated
-        })
-
-        self.tidyDataForCustomUserQuery = dataFrame.melt(id_vars='names', value_vars=['manual', 'automated'])
+        return specificTestCasesDict

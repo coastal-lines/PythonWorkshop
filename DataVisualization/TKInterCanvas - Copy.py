@@ -43,10 +43,10 @@ canvas.get_tk_widget().grid()
 tabFrame2 = Frame(master = tab, width = 200, height = 200, bg="red")
 tabFrame2.place(x = 1400, y = 30)
 labels = 'Frogs', 'Hogs'
-sizes = [15, 30]
+sizes = [10, 100]
 #explode = (0, 0.1, 0, 0)
 fig2, ax2 = plt.subplots()
-ax2.pie(sizes, labels=labels, autopct=lambda: '{:.0f}'.format(p * sum(sizes) / 100), shadow=True, startangle=90, radius=800)
+ax2.pie(sizes, labels=labels, autopct=lambda p: '{:.0f}'.format(p * sum(sizes) / 100), shadow=True, startangle=90, radius=800)
 ax2.axis('equal')
 fig2.set_size_inches(2,2)
 canvas2 = FigureCanvasTkAgg(fig2, master = tabFrame2)

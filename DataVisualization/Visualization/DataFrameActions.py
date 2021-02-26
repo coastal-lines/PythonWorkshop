@@ -39,3 +39,16 @@ class DataFrameActions():
         for folder in tidyDataFrame:
             for cases in folder:
                 pass
+
+    def prepareDataForAllTestCasesChartPie(tidyData):
+        m = 0
+        a = 0
+
+        for bar in tidyData.iloc:
+            if bar["variable"] == "manual":
+                m = m + int(bar["value"])
+            else:
+                a = a + int(bar["value"])
+
+        allTestCasesForChartPie = {"manual": m, "automated": a}
+        return allTestCasesForChartPie

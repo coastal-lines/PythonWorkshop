@@ -16,7 +16,7 @@ def login(folderID):
 
     rootWorkspace = None
     for ws in workspaces:
-        if(ws.Name == 'BTL Group Ltd.'):
+        if(ws.Name == 'БТЛ Group Ltd.'):
             rootWorkspace = ws
             break
 
@@ -24,7 +24,7 @@ def login(folderID):
     rootProject = None
     for pr in projects:
         print(pr.Name)
-        if(pr.Name == 'Surpass 12 Regression Test Pack'):
+        if(pr.Name == 'Сюрпас 12 Regression Test Pack'):
             print(pr);
             rootProject = pr
             break
@@ -32,11 +32,11 @@ def login(folderID):
     rally.setWorkspace(rootWorkspace.Name)
     rally.setProject(rootProject.Name)
 
-    folder_id = "TF22587"
+    folder_id = "ТФ22587"
 
-    query_criteria = 'FormattedID = "TF22587"'
+    query_criteria = 'FormattedID = "ТФ22587"'
     query = 'FormattedID = %s'
-    test_folder_req = rally.get('TestFolder', fetch=True, projectScopeDown=True, query=query % 'TF22587')
+    test_folder_req = rally.get('TestFolder', fetch=True, projectScopeDown=True, query=query % 'ТФ22587')
     test_folder = test_folder_req.next()
     test_cases = test_folder.TestCases
     print('Start working with %s' % folder_id)
@@ -59,5 +59,5 @@ def login(folderID):
     plt.bar(index,values)
     plt.show()
 
-login("TF22587")
+login("ТФ22587")
 a = 100
