@@ -8,50 +8,37 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 #WINDOW
 #window - экземпляр класса tkinter
 window = Tk()
-window.geometry("1700x900")
+window.geometry("1800x900")
 window.configure(bg="black")
 
 #TAB
 #ttk.Notebook - это контейнер для таб
 tabControl = ttk.Notebook(window)
-tabControl.place(x = 0, y = 0, width = 1650, height = 850)
+tabControl.place(x = 0, y = 0, width = 1800, height = 900)
 tab = ttk.Frame()
-tab.place(x =20, y = 30)
+tab.place(x =0, y = 0)
 tabControl.add(tab, text ='Settings')
 
 #Frame - виджет помогающий разместить несколько областей для элементов
-tabFrame = Frame(master = tab, width = 1600, height = 800, bg="white")
-tabFrame.place(x =30, y = 40)
+tabFrame = Frame(master = tab, width = 1600, height = 800, bg="blue")
+tabFrame.place(x =0, y = 0)
 
-dpi = 96
-plt.rcParams['figure.figsize']=(1400 / dpi, 700 / dpi)
-plt.rcParams['axes.facecolor'] = 'green'
-plt.rcParams['savefig.facecolor']='black'
-plt.scatter(40, 50)
-fig, ax = plt.subplots()
-tips = sns.load_dataset("tips")
-ax = sns.barplot(x="day", y="total_bill", data=tips)
 
-#мы это используем для отрисовки, когда все готово???????
-canvas = FigureCanvasTkAgg(fig, master = tabFrame)
-canvas.draw()
-canvas.get_tk_widget().grid()
-
-"""
 #фрейм для авто/ручное
 tabFrame2 = Frame(master = tab, width = 200, height = 200, bg="red")
-tabFrame2.place(x = 1500, y = 30)
-labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-sizes = [15, 30, 45, 10]
-explode = (0, 0.1, 0, 0)
-fig2, ax2 = plt.subplots()
-ax2.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90, radius=800)
-ax2.axis('equal')
-fig2.set_size_inches(2,2)
-canvas2 = FigureCanvasTkAgg(fig2, master = tabFrame2)
-canvas2.draw()
-canvas2.get_tk_widget().grid()
+tabFrame2.place(x = 1600, y = 0)
 
+tabFrame3 = Frame(master = tab, width = 200, height = 200, bg="orange")
+tabFrame3.place(x = 1600, y = 200)
+
+tabFrame4 = Frame(master = tab, width = 1600, height = 20, bg="white")
+tabFrame4.place(x = 0, y = 800)
+
+tabFrame5 = Frame(master = tab, width = 1600, height = 20, bg="pink")
+tabFrame5.place(x = 0, y = 820)
+
+
+"""
 #фрейм для флеш
 tabFrame3 = Frame(master = tab, width = 200, height = 200, bg="red")
 tabFrame3.place(x = 1500, y = 300)

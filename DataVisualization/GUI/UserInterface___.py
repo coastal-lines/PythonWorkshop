@@ -9,7 +9,6 @@ import pandas as pd
 from pyral import Rally, rallyWorkset
 from DataVisualization.CommonClass import CommonClass
 from DataVisualization.Visualization.UserDataObjects.UserTabData import UserTabData
-from DataVisualization.Visualization.DataFrameActions import DataFrameActions
 
 class UserInterface():
     tabCount = 0
@@ -31,7 +30,7 @@ class UserInterface():
         self.window.geometry("1800x900")
 
         self.tabControl = ttk.Notebook(self.window)
-        self.tabControl.place(x = 0, y = 0, width = 1800, height = 900)
+        self.tabControl.place(x = 0, y = 0, width = 1800, height = 800)
 
         self.createMainTab()
 
@@ -45,7 +44,16 @@ class UserInterface():
         #the main screen?!
 
         #query elements frame
-        self.createQueryPanel(tab)
+        frameQueryElements = Frame(master = self.window, width = 1800, height = 20)
+        frameQueryElements.place(x = 0, y = 800)
+
+        lbl = Label(master = frameQueryElements, text="Query input:")
+        lbl.place(x = 0, y = 0, width=100)
+        self.queryText = Entry(master = frameQueryElements)
+        self.queryText.place(x = 100, y = 0, width=900)
+        btn = Button(master = frameQueryElements, text = "Find test cases", command = self.createTab)
+        btn.place(x = 1000, y = 0, width=92)
+        
 
         lbl1 = Label(master = tab, text="Server:")
         lbl1.place(x = 0, y = 0, width=100)
@@ -85,13 +93,8 @@ class UserInterface():
 
     def createCustomTab(self):
         query = self.queryText.get()
-        tidy = self.commonClass.getCustomUserRequest(query, self.rootFolderText.get())
-
-        #all test cases chart pie
-        allTestCasesForChartPie = DataFrameActions.prepareDataForAllTestCasesChartPie(tidy)
-
-        #specific test cases chart pie
-        specificTestCasesDict = self.commonClass.getSpecificTestCasesForChartPie("user")
+        #tidy = self.commonClass.getCustomUserRequest(query, self.rootFolderText.get())
+        tidy = self.tempTidy()
 
         self.tabCount = self.tabCount + 1
 
@@ -100,36 +103,49 @@ class UserInterface():
         tab.place(x = 0, y = 0)
         self.tabControl.add(tab, text = "User query")
 
-        figureFrame = Frame(master = tab, width = 1600, height = 800, bg="red")
+        figureFrame = Frame(master = tab, width = 1600, height = 700, bg="red")
         figureFrame.place(x = 0, y = 0)
-
+        
         dpi = 96
-        plt.rcParams['figure.figsize']=(1520 / dpi, 760 / dpi)
+        plt.rcParams['figure.figsize']=(1450 / dpi, 550 / dpi)
         plt.rcParams.update({'figure.autolayout': True})
+
         fig, ax = plt.subplots()
+        
         #set folder name for Figure
         fig.suptitle("User query: " + query)
+
+        self.listUserTabData.append(UserTabData(self.tabCount, None, None, None))
+
         ax = sns.barplot(y='names', x='value', hue='variable', data = tidy)
+
         ax.set_xlim(0, max(tidy.value) + 1)
         ax.set_xticks(range(1, max(tidy.value) + 1))
+        
         #??????????????
         canvas = FigureCanvasTkAgg(fig, master = figureFrame)
         canvas.draw()
         canvas.get_tk_widget().grid()
-
-        self.listUserTabData.append(UserTabData(self.tabCount, None, None, None))
-                
-        #фрейм для авто/ручное
-        self.createFullCountTestCasesPie(tab, allTestCasesForChartPie)
-        self.createCustomPie1(tab, specificTestCasesDict)
-        self.createCustomPie2(tab)
-
-        figureToolbar = Frame(master = tab, width = 1600, height = 40, bg="black")
+        
+        figureToolbar = Frame(master = tab, width = 1600, height = 40, bg="red", relief=RIDGE)
         figureToolbar.place(x = 0, y = 800)
         toolbar = NavigationToolbar2Tk(canvas, figureToolbar, pack_toolbar = False)
         toolbar.place(x = 0, y = 0)
+
+        #фрейм для авто/ручное
+        totalTestCasesCountFrame = Frame(master = tab, width = 200, height = 200, bg="green")
+        totalTestCasesCountFrame.place(x = 1600, y = 30)
+        labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+        sizes = [15, 30, 45, 10]
+        explode = (0, 0.1, 0, 0)
+        fig2, ax2 = plt.subplots()
+        ax2.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90, radius=800)
+        ax2.axis('equal')
+        fig2.set_size_inches(2,2)
+        canvas2 = FigureCanvasTkAgg(fig2, master = totalTestCasesCountFrame)
+        canvas2.draw()
+        canvas2.get_tk_widget().grid()
         
-        self.createQueryPanel(tab)
         #self.tempCreate(tab)
 
     def createDefaultTab(self):
@@ -173,16 +189,6 @@ class UserInterface():
         canvas.draw()
         canvas.get_tk_widget().grid()
 
-        #all test cases chart pie
-        allTestCasesForChartPie = DataFrameActions.prepareDataForAllTestCasesChartPie(self.tidy)
-        #фрейм для авто/ручное
-        self.createFullCountTestCasesPie(tab, allTestCasesForChartPie)
-
-        #specific test cases chart pie
-        self.commonClass.setTestCasesFromUserQuery()
-        specificTestCasesDict = self.commonClass.getSpecificTestCasesForChartPie("default")
-        self.createCustomPie1(tab, specificTestCasesDict)
-
         toolbar = NavigationToolbar2Tk(canvas, tab, pack_toolbar=False)
         toolbar.place(x = 0, y = 780)
 
@@ -215,50 +221,13 @@ class UserInterface():
             self.commonClass.setRootFolder(newFolderId)
             self.createTab()
 
-    def createQueryPanel(self, tab):
-        #query elements frame
-        frameQueryElements = Frame(master = tab, width = 1800, height = 30)
-        frameQueryElements.place(x = 0, y = 840)
+    def createPieForAllTestCases(self):
+        pass
 
-        lbl = Label(master = frameQueryElements, text="Query input:")
-        lbl.place(x = 0, y = 0, width=100)
-        self.queryText = Entry(master = frameQueryElements)
-        self.queryText.place(x = 100, y = 0, width=900, height = 22)
-        btn = Button(master = frameQueryElements, text = "Find test cases", command = self.createTab)
-        btn.place(x = 1000, y = 0, width=92)
-
-    def createFullCountTestCasesPie(self, tab, allTestCasesForChartPie):
+    def tempCreate(self, tab):
         #фрейм для авто/ручное
-        totalTestCasesCountFrame = Frame(master = tab, width = 200, height = 200, bg="green")
-        totalTestCasesCountFrame.place(x = 1600, y = 0)
-        labels = 'Manual', 'AT'
-        values = [allTestCasesForChartPie["manual"], allTestCasesForChartPie["automated"]]
-        fig2, ax2 = plt.subplots()
-        ax2.pie(values, labels=labels, autopct = lambda p: '{:.0f}'.format(p * sum(values) / 100), shadow=True, startangle=90, radius=800)
-        ax2.axis('equal')
-        fig2.set_size_inches(2,2)
-        canvas2 = FigureCanvasTkAgg(fig2, master = totalTestCasesCountFrame)
-        canvas2.draw()
-        canvas2.get_tk_widget().grid()
-
-    def createCustomPie1(self, tab, specificTestCasesDict):
-        #фрейм для авто/ручное
-        totalTestCasesCountFrame = Frame(master = tab, width = 200, height = 200, bg="green")
-        totalTestCasesCountFrame.place(x = 1600, y = 210)
-        labels = 'other', 'SC'
-        values = [specificTestCasesDict["Other"], specificTestCasesDict["SC"]]
-        fig2, ax2 = plt.subplots()
-        ax2.pie(values, labels=labels, autopct = lambda p: '{:.0f}'.format(p * sum(values) / 100), shadow=True, startangle=90, radius=800)
-        ax2.axis('equal')
-        fig2.set_size_inches(2,2)
-        canvas2 = FigureCanvasTkAgg(fig2, master = totalTestCasesCountFrame)
-        canvas2.draw()
-        canvas2.get_tk_widget().grid()
-
-    def createCustomPie2(self, tab):
-        #фрейм для авто/ручное
-        totalTestCasesCountFrame = Frame(master = tab, width = 200, height = 200, bg="green")
-        totalTestCasesCountFrame.place(x = 1600, y = 400)
+        totalTestCasesCountFrame = Frame(master = tab, width = 200, height = 200, bg="red")
+        totalTestCasesCountFrame.place(x = 1500, y = 30)
         labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
         sizes = [15, 30, 45, 10]
         explode = (0, 0.1, 0, 0)
@@ -270,6 +239,18 @@ class UserInterface():
         canvas2.draw()
         canvas2.get_tk_widget().grid()
 
-    def prepareAbsoluteValuesForChartPie(values):
-        a  = numpy.round(values/100.*sizes.sum(), 0)
-        return a
+    def tempTidy(self):
+        ids = ['TF15976', 'TF16518', 'TF18747', 'TF19778', 'TF20258', 'TF20310', 'TF20687', 'TF21795']
+        names = ['1', '2', '3', '4', '5', '6', '7', '8']
+        manual = [6, 0, 3, 0, 9, 1, 0, 1]
+        automated = [2, 2, 30, 17, 10, 7, 8, 6]
+
+        df = pd.DataFrame({
+            'ids': ids,
+            'names': names,
+            'manual': manual,
+            'automated': automated
+        })
+
+        tidy = df.melt(id_vars='names', value_vars=['manual', 'automated'])
+        return tidy

@@ -6,6 +6,8 @@ from pyral import Rally, rallyWorkset
 
 class TestsAndFoldersActions():
     allTestCasesInFolderIncludeSubfolders = []
+    allTC = []
+    listTC = []
 
     #def __init__(self, allTestCasesInFolderIncludeSubfolders, rootFolder):
      #   self.rootFolder = rootFolder
@@ -47,6 +49,7 @@ class TestsAndFoldersActions():
             for testCase in folder.TestCases: 
                 print(testCase.Name)
                 TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.append(testCase)
+                TestsAndFoldersActions.allTC.append(testCase)
         if len(folder.Children) > 0:
             TestsAndFoldersActions.extractFolders(folder.Children)
 
@@ -56,6 +59,7 @@ class TestsAndFoldersActions():
             for testCase in folder.TestCases: 
                 print(testCase.Name)
                 TestsAndFoldersActions.allTestCasesInFolderIncludeSubfolders.append(testCase)
+                TestsAndFoldersActions.allTC.append(testCase)
 
     #@staticmethod
     def prepareDict():
@@ -86,13 +90,13 @@ class TestsAndFoldersActions():
     @staticmethod
     def getCustomUserRequest(testCasesFromUserQuery, listRootSubfolders):
         #extract test cases from response
-        listTC = []
+        #listTC = []
         for number in range(testCasesFromUserQuery.resultCount):
-            listTC.append(testCasesFromUserQuery.next())
+            TestsAndFoldersActions.listTC.append(testCasesFromUserQuery.next())
 
         #prepare cases for bars
         listRootFoldersOfUser = []
-        for tc in listTC:
+        for tc in TestsAndFoldersActions.listTC:
             tcType = None
             tcId = None
             tcRoot = None
@@ -171,3 +175,30 @@ class TestsAndFoldersActions():
                 TestsAndFoldersActions.getParentName(testFolder.Parent, rootFolderName)
         except AttributeError:
             print("not this root folder")
+
+    #надо переименовать
+    @staticmethod
+    def getDataForCustomChartPie1(testCasesFromUserQuery, typeOfRequest):
+        countSpecificTestCases = 0
+        countAllOtherTestCases = 0
+
+        if typeOfRequest == "user":
+            countAllOtherTestCases = len(TestsAndFoldersActions.listTC)
+            for testCase in TestsAndFoldersActions.listTC:
+                if "SecureClient" in testCase.Name or "Secure Client" in testCase.Name or "HTML SC" in testCase.Name:
+                    countSpecificTestCases = countSpecificTestCases + 1
+
+        if typeOfRequest == "default":
+            for testCase in testCasesFromUserQuery:
+                countAllOtherTestCases = countAllOtherTestCases + 1
+                if "SecureClient" in testCase.Name or "Secure Client" in testCase.Name or "HTML SC" in testCase.Name:
+                    countSpecificTestCases = countSpecificTestCases + 1
+
+        countAllOtherTestCases = countAllOtherTestCases - countSpecificTestCases
+        specificTestCasesDict = {"SC": countSpecificTestCases, "Other": countAllOtherTestCases}
+
+        return specificTestCasesDict
+
+    @staticmethod
+    def getAllTestCasesInFolderIncludeSubfolders():
+        return TestsAndFoldersActions.allTC
