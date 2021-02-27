@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DataVisualization\MainClass.py</StartupFile>
+    <StartupFile>OpenCV\School\module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -309,6 +309,9 @@
     <Compile Include="OpenCV\Rectangle.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\School\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Sikuli.py">
       <SubType>Code</SubType>
     </Compile>
@@ -341,6 +344,7 @@
     <Folder Include="Math\" />
     <Folder Include="DataVisualization\" />
     <Folder Include="OpenCV\" />
+    <Folder Include="OpenCV\School\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
