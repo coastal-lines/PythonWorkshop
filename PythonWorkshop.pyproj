@@ -138,129 +138,6 @@
     <Compile Include="Basic\UnitTest\UntTesting.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataVisualization\CommonClass.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\draft.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\FindCasesInFolder.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Graph.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\GraphActions2.py" />
-    <Compile Include="DataVisualization\GUI.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\gui3.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\gui5.py" />
-    <Compile Include="DataVisualization\gui4.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\GUI\UserInterface.py" />
-    <Compile Include="DataVisualization\GUI\UserInterface___.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\MainClass.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module1.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module2.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module3.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module4.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\GraphActions.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module5.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module6.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\module7.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Pandas1.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\PandasSeries.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyCommonObject.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyFolder.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyInstance.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyTestCase.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyTestCaseSteps.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\RallyWorkspace.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Project\UserCredential.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Seaborn.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Seaborn3.py" />
-    <Compile Include="DataVisualization\Seaborn2.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\SpecificRequest.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Tabs - Copy.py" />
-    <Compile Include="DataVisualization\Tabs.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\TempMethods.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\TKInterCanvas - Copy.py" />
-    <Compile Include="DataVisualization\TKInterCanvas.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\TempOOP.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Visualization\UserDataObjects\BarClass.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Visualization\DataFrameActions.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\GUI2.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Visualization\TestsAndFoldersActions.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Visualization\UserDataObjects\UserTabData.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DataVisualization\Visualization\UserDataObjects\UserTestFromRequest.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Math\Derivative.py">
       <SubType>Code</SubType>
     </Compile>
@@ -334,15 +211,10 @@
     <Folder Include="Basic\Pickling\" />
     <Folder Include="Basic\ObjectOrientProgramming\" />
     <Folder Include="Basic\UnitTest\" />
-    <Folder Include="DataVisualization\GUI\" />
-    <Folder Include="DataVisualization\Visualization\" />
-    <Folder Include="DataVisualization\Project\" />
-    <Folder Include="DataVisualization\Visualization\UserDataObjects\" />
     <Folder Include="ML\" />
     <Folder Include="Basic\" />
     <Folder Include="ML\CV1\" />
     <Folder Include="Math\" />
-    <Folder Include="DataVisualization\" />
     <Folder Include="OpenCV\" />
     <Folder Include="OpenCV\School\" />
   </ItemGroup>
