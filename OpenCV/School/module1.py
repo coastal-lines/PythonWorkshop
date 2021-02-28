@@ -2,18 +2,20 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
+filterTests = None
+
 #open image
 img = cv.imread(r'C:\Temp2\ForTesseract\pic.png')
 
 #find specific triangle coordinates by color segmentation
-def findFilterTestsPosition(img, min, max):
+def findTriangleByColor(roi, min, max, wUser, hUser):
     #min color
     min = np.array(min)
     #max color
     max = np.array(max)
     
     #remove some details by gaussian blur
-    blur = cv.GaussianBlur(img, (7, 7), 0)
+    blur = cv.GaussianBlur(roi, (7, 7), 0)
     #remove other colors - min color and max color range
     thresh = cv.inRange(blur, min, max)
 
@@ -23,7 +25,7 @@ def findFilterTestsPosition(img, min, max):
     #find specific triangle by parameters
     for cnt in contours:
         x,y,w,h = cv.boundingRect(cnt)
-        if w > 209 and h > 550:
+        if w > wUser and h > hUser:
             print(x,y,w,h)
             cv.drawContours(img, [cnt], 0, (0,255,0), 3) # рисуем прямоугольник
             return x,y,w,h
@@ -34,11 +36,20 @@ def cutArea(img, x, y, w, h):
 
     return crop_img
 
-#find FilterTests region
-x,y,w,h = findFilterTestsPosition(img, [245, 245, 245], [255, 255, 255])
-newImg = cutArea(img, x, y, w, h)
+def findFilterTests():
+    #find FilterTests region
+    w = img.shape[1]
+    h = img.shape[0]
+    roi = img[0:w,0:h]
+    x,y,w,h = findTriangleByColor(roi, [245, 245, 245], [255, 255, 255], 209, 550)
+    filterTests = cutArea(img, x, y, w, h)
 
+def findTestNameField():
+    #find FilterTests region
+    x,y,w,h = findTriangleByColor(filterTests, [245, 245, 245], [255, 255, 255], 209, 550)
+    filterTests = cutArea(img, x, y, w, h)
 
-
-cv.imshow('', newImg)
+findFilterTests()
+findTestNameField()
+cv.imshow('', img)
 cv.waitKey(0)
