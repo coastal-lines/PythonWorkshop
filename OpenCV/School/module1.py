@@ -2,29 +2,43 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
+#open image
 img = cv.imread(r'C:\Temp2\ForTesseract\pic.png')
 
-min = np.array([245, 245, 245])
-max = np.array([255, 255, 255])
+#find specific triangle coordinates by color segmentation
+def findFilterTestsPosition(img, min, max):
+    #min color
+    min = np.array(min)
+    #max color
+    max = np.array(max)
+    
+    #remove some details by gaussian blur
+    blur = cv.GaussianBlur(img, (7, 7), 0)
+    #remove other colors - min color and max color range
+    thresh = cv.inRange(blur, min, max)
 
-thresh = cv.inRange(img, min, max)
-result = cv.bitwise_and(img, img, mask=thresh)
-blur = cv.GaussianBlur(result, (7, 7), 0)
+    #find contours
+    contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+    #find specific triangle by parameters
+    for cnt in contours:
+        x,y,w,h = cv.boundingRect(cnt)
+        if w > 209 and h > 550:
+            print(x,y,w,h)
+            cv.drawContours(img, [cnt], 0, (0,255,0), 3) # рисуем прямоугольник
+            return x,y,w,h
+
+#cut subarea from image
+def cutArea(img, x, y, w, h):
+    crop_img = img[y:y+h, x:x+w]
+
+    return crop_img
+
+#find FilterTests region
+x,y,w,h = findFilterTestsPosition(img, [245, 245, 245], [255, 255, 255])
+newImg = cutArea(img, x, y, w, h)
 
 
-contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
-for cnt in contours:
-        rect = cv.minAreaRect(cnt) # пытаемся вписать прямоугольник
-        box = cv.boxPoints(rect) # поиск четырех вершин прямоугольника
-        box = np.int0(box) # округление координат
-        cv.drawContours(img,[box],0,(255,0,0),2) # рисуем прямоугольник
-
-cv.imshow('', blur)
+cv.imshow('', newImg)
 cv.waitKey(0)
-
-#img_bw_rgb = cv.cvtColor(image_original, cv.COLOR_BGR2RGB)
-
-plt.imshow(thresh, cmap="gray")
-imgplot = plt.imshow(result)
-plt.show()
