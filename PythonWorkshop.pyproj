@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\School\module1.py</StartupFile>
+    <StartupFile>OpenCV\School\TestsPage\module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -189,6 +189,9 @@
     <Compile Include="OpenCV\School\module1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\School\TestsPage\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Sikuli.py">
       <SubType>Code</SubType>
     </Compile>
@@ -217,6 +220,8 @@
     <Folder Include="Math\" />
     <Folder Include="OpenCV\" />
     <Folder Include="OpenCV\School\" />
+    <Folder Include="OpenCV\School\Tesseract\" />
+    <Folder Include="OpenCV\School\TestsPage\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
