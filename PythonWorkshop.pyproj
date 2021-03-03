@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\School\TestsPage\module1.py</StartupFile>
+    <StartupFile>OpenCV\School\Tesseract\module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -187,6 +187,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\School\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\School\Tesseract\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\School\TestsPage\FindButtonsByCanvas.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\School\TestsPage\module1.py">
