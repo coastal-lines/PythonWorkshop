@@ -189,6 +189,9 @@
     <Compile Include="OpenCV\School\module1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\School\TemplateMatching\TM.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\School\Tesseract\module1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -226,6 +229,7 @@
     <Folder Include="Math\" />
     <Folder Include="OpenCV\" />
     <Folder Include="OpenCV\School\" />
+    <Folder Include="OpenCV\School\TemplateMatching\" />
     <Folder Include="OpenCV\School\Tesseract\" />
     <Folder Include="OpenCV\School\TestsPage\" />
   </ItemGroup>
