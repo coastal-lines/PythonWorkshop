@@ -25,11 +25,11 @@ for result in loc:
     point1 = (x , y)
     point2 = (x + w, y + h)
     #cv.rectangle(img, point1, point2, (0,255,0), 1)
-    cv.rectangle(img, result, (result[0] + w, result[1] + h), (0,0,255), 1)
+    #cv.rectangle(img, result, (result[0] + w, result[1] + h), (0,0,255), 1)
     #cv.rectangle(img, pt,      (pt[0], pt[1]), (0,0,255), 1)
 
 #for pt in zip(*loc[::-1]):
  #   cv.rectangle(img, pt, (pt[0] + w, pt[1] + h), (0,255,0), 1)
 
-cv.imshow('Detected', img)
+cv.imshow('Detected', res)
 cv.waitKey(0)
