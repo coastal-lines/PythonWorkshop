@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\School\TestsPage\FindButtonsByCanvas.py</StartupFile>
+    <StartupFile>OpenCV\MyProject\MyProjectForFlashAutomation.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -174,6 +174,9 @@
     <Compile Include="OpenCV\Contours.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\MyProject\MyProjectForFlashAutomation.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\OpenCV1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -228,6 +231,7 @@
     <Folder Include="ML\CV1\" />
     <Folder Include="Math\" />
     <Folder Include="OpenCV\" />
+    <Folder Include="OpenCV\MyProject\" />
     <Folder Include="OpenCV\School\" />
     <Folder Include="OpenCV\School\TemplateMatching\" />
     <Folder Include="OpenCV\School\Tesseract\" />
