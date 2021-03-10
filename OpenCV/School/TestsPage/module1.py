@@ -50,7 +50,17 @@ for cnt in contours:
         point2 = (x + w, y + h)
         cv.rectangle(img, point1, point2, (0,255,0), 1)
 
-
+#find Apply Filters button
+img_gr = cv.imread(r'C:\Temp2\Flash\tests4.bmp', cv.IMREAD_GRAYSCALE)
+template = cv.imread(r'C:\Temp2\Flash\tmp1.bmp', cv.IMREAD_GRAYSCALE)
+h, w = template.shape
+res = cv.matchTemplate(img_gr, template, cv.TM_SQDIFF)
+min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
+x = min_loc[0]
+y = min_loc[1]
+point1 = (x , y)
+point2 = (x + w, y + h)
+cv.rectangle(img, point1, point2, (0,255,0), 1)
 
 cv.imshow('', img)
 cv.waitKey(0)
