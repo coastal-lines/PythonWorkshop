@@ -30,6 +30,12 @@ point1 = (x , y)
 point2 = (x + w, y + h)
 cv.rectangle(img, point1, point2, (0,255,0), 1)
 
+x1, y1 = point1[::]
+x2, y2 = point2[::]
+x3 = ((x2 - x1) / 2) + x1
+y3 = ((y2 - y1) / 2) + y1
+
+
 #threshold = 0.9
 #loc = np.where( res >= threshold)
 

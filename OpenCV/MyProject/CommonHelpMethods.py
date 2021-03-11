@@ -8,14 +8,12 @@ def TakeScreenshot():
     rgbImg = cv.cvtColor(brgImg, cv.COLOR_BGR2RGB)
     return rgbImg
 
-
-
-
-
-
-
-
-
+def TakeCentrOfElement(pointLeftAbove, pointRightBottom):
+    x1, y1 = pointLeftAbove[::]
+    x2, y2 = pointRightBottom[::]
+    centrX = ((x2 - x1) / 2) + x1
+    centrY = ((y2 - y1) / 2) + y1
+    return centrX, centrY
 
 
 
