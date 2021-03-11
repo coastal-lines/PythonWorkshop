@@ -15,11 +15,10 @@ def TakeCentrOfElement(pointLeftAbove, pointRightBottom):
     centrY = ((y2 - y1) / 2) + y1
     return centrX, centrY
 
+def ShowImage(img):
+    cv.imshow('', TakeScreenshot())
+    cv.waitKey(0)
 
 
-
-
-
-
-cv.imshow('', TakeScreenshot())
-cv.waitKey(0)
+#cv.imshow('', TakeScreenshot())
+#cv.waitKey(0)

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\School\TemplateMatching\FindingActiveApplyFiltersButton.py</StartupFile>
+    <StartupFile>OpenCV\MyProject\MainClass.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -175,6 +175,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\MyProject\CommonHelpMethods.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\MyProject\MainClass.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\MyProject\OpenCVMethods\FindGUIObjects.py">

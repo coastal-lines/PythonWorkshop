@@ -26,7 +26,7 @@ for cnt in contours:
         print(x,y,w,h)
         cv.drawContours(img, [cnt], 0, (0,255,0), 3)
         #crop_img = img[y:y+h, x:x+w]
-
+"""
 #find Test Name and Test Reference fields
 min = np.array([250, 250, 250])
 max = np.array([255, 255, 255])
@@ -61,7 +61,7 @@ y = min_loc[1]
 point1 = (x , y)
 point2 = (x + w, y + h)
 cv.rectangle(img, point1, point2, (0,255,0), 1)
-
+"""
 cv.imshow('', img)
 cv.waitKey(0)
 
