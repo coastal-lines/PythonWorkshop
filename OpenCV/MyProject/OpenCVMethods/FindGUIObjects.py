@@ -14,11 +14,12 @@ class FindByOpenCVClass():
         contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
         for contour in contours:
             x, y, w, h = cv.boundingRect(contour)
-            if (w > width and w < width + shiftW) and (h > 550 and h < height + shiftH):
+            #if (w > width and w < width + shiftW) and (h > 550 and h < height + shiftH):
+            if w > 209 and h > 550:
                 print(x, y, w, h)
                 cv.drawContours(img, [contour], 0, (0,255,0), 3)
 
-    FindGUIObjects.ShowImage(img)
+        FindByOpenCVClass.ShowImage(img)
 
     #find by edges
 

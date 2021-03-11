@@ -1,4 +1,4 @@
-from OpenCVMethods.FindGUIObjects import FindByOpenCVClass
+from OpenCVMethods.FindGuiObjects import FindByOpenCVClass
 import cv2 as cv
 import numpy as np
 
