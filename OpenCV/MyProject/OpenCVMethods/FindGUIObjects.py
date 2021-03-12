@@ -12,14 +12,16 @@ class FindByOpenCVClass():
         blur = cv.GaussianBlur(img, (3, 3), 0)
         thresh = cv.inRange(blur, min, max)
         contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+        x, y, w, h = -1,-1,-1,-1
         for contour in contours:
             x, y, w, h = cv.boundingRect(contour)
-            #if (w > width and w < width + shiftW) and (h > 550 and h < height + shiftH):
-            if w > 209 and h > 550:
+            if (w > width - shiftW and w < width + shiftW) and (h > h - shiftH  and h < h + shiftH):
                 print(x, y, w, h)
                 cv.drawContours(img, [contour], 0, (0,255,0), 3)
+                break
+        #FindByOpenCVClass.ShowImage(img)
+        return x, y, w, h
 
-        FindByOpenCVClass.ShowImage(img)
 
     #find by edges
 

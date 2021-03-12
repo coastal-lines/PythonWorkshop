@@ -15,6 +15,10 @@ def TakeCentrOfElement(pointLeftAbove, pointRightBottom):
     centrY = ((y2 - y1) / 2) + y1
     return centrX, centrY
 
+def CropImage(img, x, y, w, h):
+    crop_img = img[y:y+h, x:x+w]
+    return crop_img
+
 def ShowImage(img):
     cv.imshow('', TakeScreenshot())
     cv.waitKey(0)
