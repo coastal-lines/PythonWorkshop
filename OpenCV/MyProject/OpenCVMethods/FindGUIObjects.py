@@ -42,7 +42,7 @@ class FindByOpenCVClass():
                     print(x, y, w, h)
                     cv.drawContours(img, [contour], 0, (0,255,0), 3)
                     break
-        FindByOpenCVClass.ShowImage(img)
+        #FindByOpenCVClass.ShowImage(img)
         return x, y, w, h
 
     #find by pattern

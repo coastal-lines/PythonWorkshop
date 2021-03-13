@@ -16,8 +16,8 @@ class MainClass():
         max = np.array([255, 255, 255])
         width = 247
         height = 565
-        x, y, w, h = FindByOpenCVClass.FindByColorSegmentation(img, min, max, width, height)
-        cropArea = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+        x, y, w, h = FindByOpenCVClass.FindByColorSegmentation(self.img, min, max, width, height)
+        cropArea = CommonHelpMethodsClass.cropImage(self.img, x, y, w, h)
         filterTest = GuiObject("FilterTest", "Tests", x, y, w, h, cropArea)
         #self.filterTest = filterTest
         return filterTest
@@ -31,8 +31,10 @@ class MainClass():
         height = 17
         text = "Test Name"
 
-        tempObj = FindByOpenCVClass.FindByColorSegmentationAndName(filterTest.img, text, min, max, width, height)
-        origX, origY = CommonHelpMethodsClass.findOriginalCoordinates(self.img, cropX, cropY)
+        x, y, w, h = FindByOpenCVClass.FindByColorSegmentationAndName(filterTest.img, text, min, max, width, height)
+        origX, origY = CommonHelpMethodsClass.findOriginalCoordinates(filterTest.x, filterTest.y, x, y)
+        cropArea = CommonHelpMethodsClass.cropImage(self.img, origX, origY, w, h)
+        testNameOfFilterTest = GuiObject("TestNameOfFilterTestField", "FilterTest", origX, origY, w, h, cropArea)
         return testNameOfFilterTest
 
 m = MainClass

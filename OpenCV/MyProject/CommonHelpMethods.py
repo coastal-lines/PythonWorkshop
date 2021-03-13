@@ -42,10 +42,10 @@ class CommonHelpMethodsClass():
         else:
             return False
 
-    def findOriginalCoordinates(originalImg, cropX, cropY):
-        origX, origY = originalImg.shape[::-1]
-        x = origX + cropX
-        y = origY + cropY
+    @staticmethod
+    def findOriginalCoordinates(originalImgX, originalImgY, cropX, cropY):
+        x = originalImgX + cropX
+        y = originalImgY + cropY
         return x, y
 
     def ShowImage(img):
