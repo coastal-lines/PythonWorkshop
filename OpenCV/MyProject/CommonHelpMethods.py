@@ -49,7 +49,7 @@ class CommonHelpMethodsClass():
         return x, y
 
     def ShowImage(img):
-        cv.imshow('', TakeScreenshot())
+        cv.imshow('', img)
         cv.waitKey(0)
 
 
