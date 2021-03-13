@@ -24,7 +24,7 @@ class CommonHelpMethodsClass():
         return crop_img
 
     @staticmethod
-    def validateText(img, text, whereItShouldBe, x, y, w, h):
+    def validateText(img, text, x, y, w, h, whereItShouldBe = "top"):
         crop_img = None
 
         #make crop from main image firstly
@@ -41,6 +41,12 @@ class CommonHelpMethodsClass():
             return True
         else:
             return False
+
+    def findOriginalCoordinates(originalImg, cropX, cropY):
+        origX, origY = originalImg.shape[::-1]
+        x = origX + cropX
+        y = origY + cropY
+        return x, y
 
     def ShowImage(img):
         cv.imshow('', TakeScreenshot())
