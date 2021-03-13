@@ -13,10 +13,20 @@ def findFilterTest():
     width = 247
     height = 565
     x, y, w, h = FindByOpenCVClass.FindByColorSegmentation(img, min, max, width, height)
-    self.filterTest = GuiObject("FilterTest", "Tests", x, y, w, h)
+    filterTest = GuiObject("FilterTest", "Tests", x, y, w, h)
+    self.filterTest = filterTest
+    return filterTest
 
 def findTestNameOfFilterTest():
+    filterTest = findFilterTest()
+    
+    min = np.array([250, 250, 250])
+    max = np.array([255, 255, 255])
+    width = 218
+    height = 17
+    text = "Test Name"
 
 
-findFilterTest()
+
+findTestNameOfFilterTest()
 r=0

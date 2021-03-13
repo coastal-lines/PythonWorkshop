@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+from CommonHelpMethods import CommonHelpMethodsClass
 
 class FindByOpenCVClass():
     #find by color segmentation
@@ -22,8 +23,27 @@ class FindByOpenCVClass():
         #FindByOpenCVClass.ShowImage(img)
         return x, y, w, h
 
-
-    #find by edges
+    #find by color segmentation and name
+    @staticmethod
+    def FindByColorSegmentationAndName(img, text, minColor, maxColor, width, height):
+        shiftW = 5
+        shiftH = 5
+        min = minColor
+        max = maxColor
+        blur = cv.GaussianBlur(img, (3, 3), 0)
+        thresh = cv.inRange(blur, min, max)
+        contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+        x, y, w, h = -1, -1, -1, -1
+        for contour in contours:
+            x, y, w, h = cv.boundingRect(contour)
+            if (w > width - shiftW and w < width + shiftW) and (h > h - shiftH  and h < h + shiftH):
+                if CommonHelpMethodsClass.validateText(img, text, x, y, w, h) == True:
+                    print("Text is: " + text)
+                    print(x, y, w, h)
+                    cv.drawContours(img, [contour], 0, (0,255,0), 3)
+                    break
+        #FindByOpenCVClass.ShowImage(img)
+        return x, y, w, h
 
 
     #find by pattern
