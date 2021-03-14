@@ -55,9 +55,13 @@ class MainClass():
         return testReferenceOfFilterTest
 
 img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
-m = MainClass(img)
+
+#каждый раз на вход поиска нужно подавать новую копию - узнать почему
+imgCopy = CommonHelpMethodsClass.copyImage(img)
+m = MainClass(imgCopy)
 filterTest = m.findFilterTest()
-filterTest = m.findFilterTest()
+filterTest2 = m.findFilterTest()
+CommonHelpMethodsClass.copyImage(img)
 testNameOfFilterTest = m.findTestNameOfFilterTest()
 testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()
 

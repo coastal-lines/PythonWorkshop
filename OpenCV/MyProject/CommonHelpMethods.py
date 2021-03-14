@@ -48,6 +48,10 @@ class CommonHelpMethodsClass():
         y = originalImgY + cropY
         return x, y
 
+    #@staticmethod
+    def copyImage(img):
+        return img.copy()
+
     def ShowImage(img):
         cv.imshow('', img)
         cv.waitKey(0)
