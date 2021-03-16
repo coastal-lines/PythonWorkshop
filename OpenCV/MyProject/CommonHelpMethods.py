@@ -6,6 +6,8 @@ import json
 
 class CommonHelpMethodsClass():
 
+    jsonData = None
+
     def TakeScreenshot():
         screenshot = pyautogui.screenshot()
         brgImg = np.array(screenshot)
@@ -57,11 +59,14 @@ class CommonHelpMethodsClass():
         cv.imshow('', img)
         cv.waitKey(0)
 
-    def loadJsonAnnotations():
+    @staticmethod
+    def loadJsonAnnotations(userObject):
         with open('C:\Temp2\Flash\labelimg\my.json') as f:
-            data = json.load(f)
+            jsonData = json.load(f)
 
-            t=0
+        for obj in jsonData['guiObjects']:
+            if obj.name == userObject:
+                return obj
 
 
 
