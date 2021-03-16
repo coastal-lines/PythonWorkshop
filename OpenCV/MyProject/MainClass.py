@@ -57,8 +57,11 @@ class MainClass():
 img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
 
 #каждый раз на вход поиска нужно подавать новую копию - узнать почему
+CommonHelpMethodsClass.loadJsonAnnotations()
+
 imgCopy = CommonHelpMethodsClass.copyImage(img)
 m = MainClass(imgCopy)
+
 filterTest = m.findFilterTest()
 filterTest2 = m.findFilterTest()
 CommonHelpMethodsClass.copyImage(img)

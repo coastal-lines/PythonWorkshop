@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 import pyautogui
 import pytesseract
+import json
 
 class CommonHelpMethodsClass():
 
@@ -55,6 +56,13 @@ class CommonHelpMethodsClass():
     def ShowImage(img):
         cv.imshow('', img)
         cv.waitKey(0)
+
+    def loadJsonAnnotations():
+        with open('C:\Temp2\Flash\labelimg\my.json') as f:
+            data = json.load(f)
+
+            t=0
+
 
 
     #cv.imshow('', TakeScreenshot())
