@@ -12,19 +12,24 @@ class MainClass():
 
     #find Tests->Filter Tests
     def findFilterTest(self):
-        min = np.array([245, 245, 245])
-        max = np.array([255, 255, 255])
-        width = 247
-        height = 565
-        x, y, w, h = FindByOpenCVClass.FindByColorSegmentation(self.img, min, max, width, height)
-        cropArea = CommonHelpMethodsClass.cropImage(self.img, x, y, w, h)
-        filterTest = GuiObject("FilterTest", "Tests", x, y, w, h, cropArea)
+        imgCopy = CommonHelpMethodsClass.copyImage(self.img)
+        obj = CommonHelpMethodsClass.loadJsonAnnotations("FilterTest")
+
+        min = np.array([obj['minColor']])
+        max = np.array([obj['maxColor']])
+        width = obj['w']
+        height = obj['h']
+        x, y, w, h = FindByOpenCVClass.FindByColorSegmentation(imgCopy, min, max, width, height)
+        cropArea = CommonHelpMethodsClass.cropImage(imgCopy, x, y, w, h)
+        filterTest = GuiObject(obj['name'], obj['parent'], x, y, w, h, cropArea)
 
         return filterTest
 
     def findTestNameOfFilterTest(self):
+        imgCopy = CommonHelpMethodsClass.copyImage(self.img)
+        obj = CommonHelpMethodsClass.loadJsonAnnotations("Test Name")
         filterTest = self.findFilterTest()
-    
+
         min = np.array([250, 250, 250])
         max = np.array([255, 255, 255])
         width = 218
@@ -33,12 +38,14 @@ class MainClass():
 
         x, y, w, h = FindByOpenCVClass.FindByColorSegmentationAndName(filterTest.img, text, min, max, width, height)
         origX, origY = CommonHelpMethodsClass.findOriginalCoordinates(filterTest.x, filterTest.y, x, y)
-        cropArea = CommonHelpMethodsClass.cropImage(self.img, origX, origY, w, h)
+        cropArea = CommonHelpMethodsClass.cropImage(imgCopy, origX, origY, w, h)
         testNameOfFilterTest = GuiObject("TestNameOfFilterTestField", "FilterTest", origX, origY, w, h, cropArea)
 
         return testNameOfFilterTest
 
     def findTestReferenceOfFilterTest(self):
+        imgCopy = CommonHelpMethodsClass.copyImage(self.img)
+        obj = CommonHelpMethodsClass.loadJsonAnnotations("Test Reference")
         filterTest = self.findFilterTest()
     
         min = np.array([250, 250, 250])
@@ -49,23 +56,30 @@ class MainClass():
 
         x, y, w, h = FindByOpenCVClass.FindByColorSegmentationAndName(filterTest.img, text, min, max, width, height)
         origX, origY = CommonHelpMethodsClass.findOriginalCoordinates(filterTest.x, filterTest.y, x, y)
-        cropArea = CommonHelpMethodsClass.cropImage(self.img, origX, origY, w, h)
+        cropArea = CommonHelpMethodsClass.cropImage(imgCopy, origX, origY, w, h)
         testReferenceOfFilterTest = GuiObject("TestReverenceOfFilterTestField", "FilterTest", origX, origY, w, h, cropArea)
 
         return testReferenceOfFilterTest
 
-img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
+def draw(obj, img):
+    point1 = (obj.x, obj.y)
+    point2 = (obj.x + obj.w, obj.y + obj.h)
+    cv.rectangle(img, point1, point2, (0,255,0), 1)
 
 #каждый раз на вход поиска нужно подавать новую копию - узнать почему
-CommonHelpMethodsClass.loadJsonAnnotations("FilterTest")
+img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
 
-imgCopy = CommonHelpMethodsClass.copyImage(img)
-m = MainClass(imgCopy)
-
+m = MainClass(img)
 filterTest = m.findFilterTest()
-filterTest2 = m.findFilterTest()
-CommonHelpMethodsClass.copyImage(img)
 testNameOfFilterTest = m.findTestNameOfFilterTest()
 testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()
+
+draw(filterTest, img)
+draw(testNameOfFilterTest, img)
+draw(testReferenceOfFilterTest, img)
+
+CommonHelpMethodsClass.ShowImage(img)
+
+
 
 y=0

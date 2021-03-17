@@ -65,7 +65,7 @@ class CommonHelpMethodsClass():
             jsonData = json.load(f)
 
         for obj in jsonData['guiObjects']:
-            if obj.name == userObject:
+            if obj['name'] == userObject:
                 return obj
 
 
