@@ -74,12 +74,12 @@ filterTest = m.findFilterTest()
 testNameOfFilterTest = m.findTestNameOfFilterTest()
 testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()
 
+"""
 draw(filterTest, img)
 draw(testNameOfFilterTest, img)
 draw(testReferenceOfFilterTest, img)
-
 CommonHelpMethodsClass.ShowImage(img)
-
+"""
 
 
 y=0
