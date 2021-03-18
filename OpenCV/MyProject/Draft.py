@@ -23,6 +23,12 @@ def rgb2gray():
 def imgBlur():
     img_gray = rgb2gray()
     img_blur = cv.blur(img_gray, (3, 3))
-    showImg(img_blur)
+    #showImg(img_blur)
+    return img_blur
 
-imgBlur()
+def edgeDetection():
+    img_blur = imgBlur()
+    edges = cv.Canny(img_blur, 100, 200)
+    showImg(edges)
+
+edgeDetection()
