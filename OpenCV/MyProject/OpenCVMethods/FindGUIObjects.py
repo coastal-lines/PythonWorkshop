@@ -75,6 +75,30 @@ class FindByOpenCVClass():
 
         return point1, point2
 
+    def findByContoursAndText(img, text, minThreshold, maxThreshold):
+        imgCopy = CommonHelpMethodsClass.copyImage(img)
+        img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+        img_gray = cv.cvtColor(img_rgb, cv.COLOR_RGB2GRAY)
+        ret, thresh1 = cv.threshold(img_gray, minThreshold, maxThreshold, cv.THRESH_BINARY)
+        contours, hierarchy = cv.findContours(thresh1, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
+
+        for contour in contours:
+            x,y,w,h = cv.boundingRect(contour)
+            point1 = (x , y)
+            point2 = (x + w, y + h)
+            #ONLY FOR DEBUG
+            if w > 300 and h > 300:
+                crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+                actualText = CommonHelpMethodsClass.getTextFromImage(crop)
+                print(actualText)
+                cv.rectangle(img, point1, point2, (0,255,0), 1)
+                #if text in actualText:
+                 #   cv.rectangle(img, point1, point2, (0,255,0), 1)
+                    #return x,y,w,h
+
+        FindByOpenCVClass.ShowImage(img)
+            #break
+
     @staticmethod
     def ShowImage(img):
         cv.imshow('', img)

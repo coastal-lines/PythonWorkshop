@@ -70,6 +70,7 @@ def draw(obj, img):
 img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
 
 m = MainClass(img)
+t = FindByOpenCVClass.findByContoursAndText(img, "Subject Name", 238, 240)
 filterTest = m.findFilterTest()
 testNameOfFilterTest = m.findTestNameOfFilterTest()
 testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()

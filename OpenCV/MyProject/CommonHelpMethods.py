@@ -24,6 +24,7 @@ class CommonHelpMethodsClass():
     @staticmethod
     def cropImage(img, x, y, w, h):
         crop_img = img[y:y+h, x:x+w]
+        #print("I'm cropping" + " " + str(x))
         return crop_img
 
     @staticmethod
@@ -44,6 +45,11 @@ class CommonHelpMethodsClass():
             return True
         else:
             return False
+
+    @staticmethod
+    def getTextFromImage(cropImg):
+        textFromImage = pytesseract.image_to_string(cropImg)
+        return textFromImage
 
     @staticmethod
     def findOriginalCoordinates(originalImgX, originalImgY, cropX, cropY):
