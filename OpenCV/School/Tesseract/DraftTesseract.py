@@ -4,6 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pytesseract
 
-img = cv.imread(r'C:\Temp2\Flash\temp1.bmp')
-b,g,r = (img[300, 300])
+img = cv.imread(r'C:\Temp2\Flash\TesseractTest\Clipboard03.bmp')
+textFromImage = pytesseract.image_to_string(img)
 i=0

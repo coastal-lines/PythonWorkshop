@@ -35,9 +35,6 @@ def imgThreshold(min, max):
     ret, thresh1 = cv.threshold(img_gray, min, max, cv.THRESH_BINARY)
     #showImg(thresh1)
 
-    imgplot = plt.imshow(thresh1,cmap='gray')
-    plt.show()
-
     return thresh1
 
 def edgeDetection():
@@ -45,14 +42,17 @@ def edgeDetection():
     edges = cv.Canny(img_blur, 100, 150, L2gradient = True)
     showImg(edges)
 
-def contourDetection():
-    img_gray = rgb2gray()
-    img_thres = imgThreshold(img_gray, 155, 235)
-
-    contours, hierarchy = cv.findContours(img_gray, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
+def contourDetection(im):
+    contours, hierarchy = cv.findContours(im, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
 
     for contour in contours:
-        cv.drawContours(img, contour, 0, (0,255,0), 3)
-    showImg()
+        x,y,w,h = cv.boundingRect(contour)
+        point1 = (x , y)
+        point2 = (x + w, y + h)
+        cv.rectangle(img, point1, point2, (0,255,0), 1)
 
-imgThreshold(142, 229)
+    cv.imshow("", img)
+    cv.waitKey(0)
+
+thr = imgThreshold(238, 240)
+contourDetection(thr)
