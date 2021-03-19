@@ -87,17 +87,20 @@ class FindByOpenCVClass():
             point1 = (x , y)
             point2 = (x + w, y + h)
             #ONLY FOR DEBUG
-            if w > 300 and h > 300:
+            if (w > 300 and h > 300) and (w < 1600):
                 crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
                 actualText = CommonHelpMethodsClass.getTextFromImage(crop)
                 print(actualText)
                 cv.rectangle(img, point1, point2, (0,255,0), 1)
-                #if text in actualText:
-                 #   cv.rectangle(img, point1, point2, (0,255,0), 1)
-                    #return x,y,w,h
+                if text in actualText:
+                    cv.rectangle(img, point1, point2, (0,255,0), 1)
+                    return x,y,w,h
 
-        FindByOpenCVClass.ShowImage(img)
+        #FindByOpenCVClass.ShowImage(img)
             #break
+
+    def rules():
+
 
     @staticmethod
     def ShowImage(img):
