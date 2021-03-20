@@ -87,6 +87,26 @@ class MainClass():
     def findTestInTestsTable(self, crop, text):
         imgCopy = CommonHelpMethodsClass.copyImage(crop)
 
+        contours, hierarchy = FindByOpenCVClass.findContours(imgCopy, 238, 240)
+
+        for contour in contours:
+            x, y, w, h = cv.boundingRect(contour)
+
+            if (w > 600 and h > 300) and (w < 1600):
+                crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+                actualText = CommonHelpMethodsClass.getTextFromImage(crop)
+
+                if text in actualText:
+                    point1, point2 = FindByOpenCVClass.getPointsFromContour(contour)
+                    cv.rectangle(img, point1, point2, (0,255,0), 1)
+                    #cropArea = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+                    testsTable = GuiObject("TestsTable", "Tests", x, y, w, h, crop)
+                break
+
+        CommonHelpMethodsClass.ShowImage(crop)
+
+        return testsTable
+
 
 def draw(obj, img):
     point1 = (obj.x, obj.y)
