@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
+img = cv.imread(r'C:\Temp2\Flash\tests5.bmp')
 img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
 
 def showImg(img):
@@ -29,7 +29,7 @@ def imgBlur():
     return img_blur
 
 def imgThreshold(min, max):
-    img = cv.imread(r'C:\Temp2\Flash\tests1.bmp', 0)
+    img = cv.imread(r'C:\Temp2\Flash\tests5.bmp', 0)
     img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
     img_gray = cv.cvtColor(img_rgb, cv.COLOR_RGB2GRAY)
     ret, thresh1 = cv.threshold(img_gray, min, max, cv.THRESH_BINARY)
@@ -54,5 +54,5 @@ def contourDetection(im):
     cv.imshow("", img)
     cv.waitKey(0)
 
-thr = imgThreshold(238, 240)
+thr = imgThreshold(250, 251)
 contourDetection(thr)

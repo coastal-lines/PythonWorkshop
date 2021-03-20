@@ -61,6 +61,33 @@ class MainClass():
 
         return testReferenceOfFilterTest
 
+    def findTestsTable(self, text):
+        imgCopy = CommonHelpMethodsClass.copyImage(self.img)
+
+        contours, hierarchy = FindByOpenCVClass.findContours(imgCopy, 238, 240)
+
+        for contour in contours:
+            x, y, w, h = cv.boundingRect(contour)
+
+            if (w > 600 and h > 300) and (w < 1600):
+                crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+                actualText = CommonHelpMethodsClass.getTextFromImage(crop)
+
+                if text in actualText:
+                    point1, point2 = FindByOpenCVClass.getPointsFromContour(contour)
+                    cv.rectangle(img, point1, point2, (0,255,0), 1)
+                    #cropArea = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+                    testsTable = GuiObject("TestsTable", "Tests", x, y, w, h, crop)
+                break
+
+        CommonHelpMethodsClass.ShowImage(crop)
+
+        return testsTable
+
+    def findTestInTestsTable(self, crop, text):
+        imgCopy = CommonHelpMethodsClass.copyImage(crop)
+
+
 def draw(obj, img):
     point1 = (obj.x, obj.y)
     point2 = (obj.x + obj.w, obj.y + obj.h)
@@ -70,17 +97,7 @@ def draw(obj, img):
 img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
 
 m = MainClass(img)
-t = FindByOpenCVClass.findByContoursAndText(img, "Subject Name", 238, 240)
+testsTable = m.findTestsTable("Test Name")
 filterTest = m.findFilterTest()
-testNameOfFilterTest = m.findTestNameOfFilterTest()
-testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()
-
-"""
-draw(filterTest, img)
-draw(testNameOfFilterTest, img)
-draw(testReferenceOfFilterTest, img)
-CommonHelpMethodsClass.ShowImage(img)
-"""
-
-
-y=0
+#testNameOfFilterTest = m.findTestNameOfFilterTest()
+#testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()

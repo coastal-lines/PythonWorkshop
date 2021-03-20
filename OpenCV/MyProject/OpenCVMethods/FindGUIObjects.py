@@ -99,10 +99,16 @@ class FindByOpenCVClass():
         #FindByOpenCVClass.ShowImage(img)
             #break
 
-    def rules():
+    def findContours(img, minThreshold, maxThreshold):
+        img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+        img_gray = cv.cvtColor(img_rgb, cv.COLOR_RGB2GRAY)
+        ret, thresh1 = cv.threshold(img_gray, minThreshold, maxThreshold, cv.THRESH_BINARY)
+        contours, hierarchy = cv.findContours(thresh1, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
+        return contours, hierarchy
 
+    def getPointsFromContour(contour):
+        x, y, w, h = cv.boundingRect(contour)
+        point1 = (x , y)
+        point2 = (x + w, y + h)
+        return point1, point2
 
-    @staticmethod
-    def ShowImage(img):
-        cv.imshow('', img)
-        cv.waitKey(0)
