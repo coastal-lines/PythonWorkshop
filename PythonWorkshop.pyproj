@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\MyProject\MainClass.py</StartupFile>
+    <StartupFile>OpenCV\UdemyCourse\Section2\module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -222,6 +222,9 @@
     <Compile Include="OpenCV\Sikuli.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section2\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Waldo.py">
       <SubType>Code</SubType>
     </Compile>
@@ -248,10 +251,12 @@
     <Folder Include="OpenCV\" />
     <Folder Include="OpenCV\MyProject\" />
     <Folder Include="OpenCV\MyProject\OpenCVMethods\" />
+    <Folder Include="OpenCV\UdemyCourse\" />
     <Folder Include="OpenCV\School\" />
     <Folder Include="OpenCV\School\TemplateMatching\" />
     <Folder Include="OpenCV\School\Tesseract\" />
     <Folder Include="OpenCV\School\TestsPage\" />
+    <Folder Include="OpenCV\UdemyCourse\Section2\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

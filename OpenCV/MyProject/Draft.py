@@ -58,6 +58,7 @@ def colorSegmentation():
         #check text
         crop_img = img[y:y+h, x:x+w]
         textFromImage = pytesseract.image_to_string(crop_img)
+        print(textFromImage)
         if "Test Name" in textFromImage:
             print(textFromImage)
 

@@ -64,7 +64,7 @@ class MainClass():
     def findTestsTable(self, text):
         imgCopy = CommonHelpMethodsClass.copyImage(self.img)
 
-        contours, hierarchy = FindByOpenCVClass.findContours(imgCopy, 238, 240)
+        contours, hierarchy = FindByOpenCVClass.findContoursByThreshold(imgCopy, 238, 240)
 
         for contour in contours:
             x, y, w, h = cv.boundingRect(contour)
@@ -80,32 +80,27 @@ class MainClass():
                     testsTable = GuiObject("TestsTable", "Tests", x, y, w, h, crop)
                 break
 
-        CommonHelpMethodsClass.ShowImage(crop)
+        #CommonHelpMethodsClass.ShowImage(crop)
 
         return testsTable
 
     def findTestInTestsTable(self, crop, text):
-        imgCopy = CommonHelpMethodsClass.copyImage(crop)
+        min = np.array([255, 255, 255])
+        max = np.array([255, 255, 255])
+        contours = FindByOpenCVClass.findContoursByMinMaxColors(img, min, max)
 
-        contours, hierarchy = FindByOpenCVClass.findContours(imgCopy, 238, 240)
-
+        test = None
         for contour in contours:
             x, y, w, h = cv.boundingRect(contour)
+            crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
+            actualText = CommonHelpMethodsClass.getTextFromImage(crop)
+            print(actualText)
+            if text in actualText:
+                pass
+                #print(actualText)
+                #test = GuiObject("Test:" + str(text), "TestsTable", x, y, w, h, crop)
 
-            if (w > 600 and h > 300) and (w < 1600):
-                crop = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
-                actualText = CommonHelpMethodsClass.getTextFromImage(crop)
-
-                if text in actualText:
-                    point1, point2 = FindByOpenCVClass.getPointsFromContour(contour)
-                    cv.rectangle(img, point1, point2, (0,255,0), 1)
-                    #cropArea = CommonHelpMethodsClass.cropImage(img, x, y, w, h)
-                    testsTable = GuiObject("TestsTable", "Tests", x, y, w, h, crop)
-                break
-
-        CommonHelpMethodsClass.ShowImage(crop)
-
-        return testsTable
+        return test
 
 
 def draw(obj, img):
@@ -118,6 +113,7 @@ img = cv.imread(r'C:\Temp2\Flash\tests1.bmp')
 
 m = MainClass(img)
 testsTable = m.findTestsTable("Test Name")
+test = m.findTestInTestsTable(testsTable.img, "TC53199")
 filterTest = m.findFilterTest()
 #testNameOfFilterTest = m.findTestNameOfFilterTest()
 #testReferenceOfFilterTest = m.findTestReferenceOfFilterTest()
