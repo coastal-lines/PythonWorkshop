@@ -228,6 +228,12 @@
     <Compile Include="OpenCV\UdemyCourse\Section2\module1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section3\homework.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section3\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Waldo.py">
       <SubType>Code</SubType>
     </Compile>
@@ -259,6 +265,7 @@
     <Folder Include="OpenCV\School\TemplateMatching\" />
     <Folder Include="OpenCV\School\Tesseract\" />
     <Folder Include="OpenCV\School\TestsPage\" />
+    <Folder Include="OpenCV\UdemyCourse\Section3\" />
     <Folder Include="OpenCV\UdemyCourse\Section2\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
