@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\UdemyCourse\Section3\homework.py</StartupFile>
+    <StartupFile>OpenCV\UdemyCourse\Section3\DrawByMouse.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -229,6 +229,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\UdemyCourse\Section3\draw2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section3\draw3.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\UdemyCourse\Section3\DrawByMouse.py">
