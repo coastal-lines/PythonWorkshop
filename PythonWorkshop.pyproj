@@ -243,6 +243,9 @@
     <Compile Include="OpenCV\UdemyCourse\Section3\draw1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section4\BlendingAndPastingImages.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\UdemyCourse\Section4\ColorMapping.py">
       <SubType>Code</SubType>
     </Compile>
