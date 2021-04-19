@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eb65a54d-a3ce-4844-b006-bc8d0bd43f30</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OpenCV\UdemyCourse\Section4\BlendingAndPastingImages.py</StartupFile>
+    <StartupFile>OpenCV\UdemyCourse\Section4\Masks.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -247,6 +247,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\UdemyCourse\Section4\ColorMapping.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section4\Masks.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OpenCV\Waldo.py">
