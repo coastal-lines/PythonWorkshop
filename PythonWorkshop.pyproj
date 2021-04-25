@@ -252,6 +252,9 @@
     <Compile Include="OpenCV\UdemyCourse\Section4\Masks.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OpenCV\UdemyCourse\Section4\Treshold.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OpenCV\Waldo.py">
       <SubType>Code</SubType>
     </Compile>

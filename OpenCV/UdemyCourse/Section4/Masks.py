@@ -29,8 +29,10 @@ white_background = np.full(img2.shape,255,dtype=np.uint8)
 #Дизьюнкция. Т.е. там где белый, применяем маску
 bk = cv2.bitwise_or(white_background, white_background, mask=mask_inv)
 
+#?????
 fg = cv2.bitwise_or(img2,img2,mask=mask_inv)
 
+#????
 final_roi = cv2.bitwise_or(roi,fg)
 
 large_img = img1
