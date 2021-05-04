@@ -15,7 +15,9 @@ def show_pic(img):
     plt.show()
 
 img = cv2.imread(r'C:\Users\User\Downloads\Computer-Vision-with-Python\DATA\crossword.jpg',0)
-show_pic(img)
+ret,th1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
+th2 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,11,8)
+show_pic(th2)
 
 
 #plt.imshow(img)
