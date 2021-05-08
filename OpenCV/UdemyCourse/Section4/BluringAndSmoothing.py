@@ -25,4 +25,16 @@ cv2.putText(img,text='bricks',org=(10,600),fontFace=font,fontScale=10,color=(255
 kernel = np.ones(shape=(5,5),dtype=np.float32)/25
 print(kernel)
 
-#show_pic(img)
+#custom kernel filter
+dst = cv2.filter2D(img,-1,kernel)
+#blur filter
+blurred = cv2.blur(img,ksize=(5,5))
+#gaussian blur
+gauss_blur = cv2.GaussianBlur(img,(5,5),10)
+#median blur
+median_blur = cv2.medianBlur(img,5)
+#bilateral_filter
+bilateral_filter = cv2.bilateralFilter(img,9,75,75)
+
+
+show_pic(median_blur)
